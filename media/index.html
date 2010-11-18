@@ -1,0 +1,1038 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.autocomplete.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/jquery.readonly.js"></script>
+	<script src='./js/messages_ptbr.js'   type='text/javascript'></script>
+	<script type="text/javascript" src="js/jquery.confirm.js"></script>
+	<script src='./js/tb.validation.jquery.js'   type='text/javascript'></script>
+	<script src='./js/jquery.price_format.1.3.js' type='text/javascript'></script>
+	<script type="text/javascript" src="js/action.js"></script>
+	<style type='text/css'>
+	<!--
+		@import url(./css/page_style.css);
+		@import url(./css/form_style.css);
+		@import url(./css/smoothness/jquery-ui.css);
+		@import url(./css/readonly.css);
+		@import url(./css/styles.css);
+	-->
+	</style>
+	<title>Triagem de Pacientes - Baseline (Ambulatório)</title>
+</head>
+<body>
+	<div id='mainFrame'>
+		<div id='content'>
+			<div id='maincontent'>
+			<form name='form_triagem' id='form_triagem' action='cgi-bin/submitForm' method='POST'>
+				<fieldset>
+					<div id='divDataConsulta' class='primary required'>
+						<label for='data_consulta'> Data da triagem: </label>
+						<input type="text" name="data_consulta" id="data_consulta" class='textbox required' readonly/>
+					</div>
+					<div id='divHorarioInicioEntrevista' class='primary required'>
+						<label for='horarioInicioEntrevista'> Horário do Inicio da entrevista: </label>
+						<input type='text' name='horarioInicioEntrevista' id='horarioInicioEntrevista' size='6' maxlength='6' readonly/>
+					</div>
+					<div id='divUnidade' class='primary required'>
+						<label for='unidade'> Unidade: </label>
+						<input type="text" name="unidade" id="unidade" class='textbox required'/>
+					</div>
+					<div id='divNumeroPaciente' class='primary required'>
+						<label for='numeroPaciente'> Número do Paciente no Estudo: </label>
+						<input type="text" name="numeroPaciente" id="numeroPaciente" class='number required' size='10' />
+					</div>
+					<div id='divNumeroProntuario' class='primary required'>
+						<label for='numeroProntuario'> Número de Prontuário: </label>
+						<input type='text' name='numeroProntuario' id='numeroProntuario' class='primary required' size='10' />
+					</div>
+					<div id='divPacienteExcluido' class='primary required'>
+						<label for='pacienteExcluido'>Excluído: </label>
+						<select name = "pacienteExcluido" id="pacienteExcluido">
+							<option value=""        >  ----   	</option>
+							<option value="sim"		>  Sim   	</option>
+							<option value="nao"		>  Não    	</option>
+							<option value="semTcle"	>  Sem TCLE </option>
+						</select>
+					</div>
+					<div id='divDataAssinatura' class='secondary'>
+						<label for='data_assinatura'> Data de assinatura do termo de consentimento (TCLE): </label>
+						<input type="text" name="data_assinatura" id="data_assinatura" class='required data' readonly/>
+					</div>
+				</fieldset>
+				<fieldset id='info_pessoais'>
+					<legend>Informa&ccedil;&otilde;es Pessoais do Paciente</legend>
+					<div id='divNome' class='primary required'>
+						<label for='nome'> Nome: </label>
+						<input type="text" name="nome" id="nome" class='textbox required text'/>
+					</div>
+					<div id='divNomeMae' class='primary required'>
+						<label for='nome_mae'>Nome Da M&atilde;e:</label>
+						<input type="text" name="nome_mae" id='nome_mae' class='textbox required text'/>
+					</div>
+					<div id='divDataNascimento' class='primary required'>
+						<label for='data_nascimento'> Data de Nascimento:</label>
+						<input  name="data_nascimento" id="data_nascimento" type="text" class='required' readonly/>
+					</div>
+					<div id='divIdade' class='primary required'>
+						<label for='idade'> Idade: </label>
+						<input type="text" name="idade" id="idade" class='required' size='4' maxlength='3' readonly/>
+					</div>
+					<div id='divNaturalidade' class='primary required'>
+						<label for='naturalidade'>Naturalidade: </label>
+						<select name="naturalidade" id="naturalidade" class='required'>
+							<option> ---- </option>
+						</select>
+					</div>
+					<div id='divSexo' class='primary required'>
+					<fieldset>
+						<legend>Sexo:</legend>
+						<label for='sexo' class='labelRadio'>
+							<input type="radio" name="sexo" class='required' value="Masculino"/> Masculino
+						</label>
+						<label for='sexo' class='labelRadio'>
+							<input type="radio" name="sexo" class='required' value="Feminino" /> Feminino
+						</label>
+					</fieldset>
+					</div>
+					<div id='divRaca' class='primary required'>
+						<label for='raca'>Cor da pele (expressa pelo paciente): </label>
+						<select name = "raca" id="raca" class='required'>
+							<option              >     ----   </option>
+							<option value="branco">   Branca   </option>
+							<option value="preta">    Preta    </option>
+							<option value="amarela">  Amarela  </option>
+							<option value="parda">    Parda    </option>
+							<option value="Indígena"> Indígena </option>
+						</select>
+					</div>
+					<div id='divEstadoCivil' class='primary required'>
+						<label for='estado_civil'>Estado Civil: </label>
+						<select name = "estado_civil"  id="estado_civil" class='required'>
+							<option              >      ----     </option>
+							<option value="casado">     Casado(a)     </option>
+							<option value="solteiro">   Solteiro(a)   </option>
+							<option value="amigado">    Junto/Amigado(a)   </option>
+							<option value="separado">	Desquitado(a)/Separado(a) </option>
+							<option value="divorciado"> Divorciado(a) </option>
+							<option value="viuvo">      Vi&uacute;vo(a)      </option>
+							<option value="ignorado">	Ignorado		</option>
+						</select>
+					</div>
+					<div id='divCep' class='primary'>
+						<label for='cep'>CEP: </label>
+						<input type="text" name="cep" id="cep" size='10' maxlength='9' class='textbox'/>
+					</div>
+
+					<div id='divEstado' class='primary required'>
+						<label for='estado'>Estado: </label>
+						<select name="estado" id="estado" class='required address'>
+							<option> ---- </option>
+						</select>
+					</div>
+					<div id='divTempoResidenteEstadoAtual' class='primary required'>
+						<label for='tempoResidenteEstadoAtual'>Há quantos anos você reside neste estado? </label>
+						<input type='text' name="tempoResidenteEstadoAtual" id="tempoResidenteEstadoAtual" class='required number' size='3' maxlength='2'> anos
+					</div>
+					<div id='divCidade' class='primary required'>
+						<label for='cidade'>Cidade: </label>
+						<input type="text" name="cidade" id="cidade" class='textbox required text'/>
+					</div>
+					<div id='divBairro' class='primary required'>
+						<label for='bairro'>Bairro: </label>
+						<input type="text" name="bairro" id="bairro" class='textbox required text'/>
+					</div>
+					<div id='divEndereco' class='primary required'>
+						<label for='endereco'>Endere&ccedil;o: </label>
+						<input type="text" name="endereco" id="endereco" class='textbox required address'/>
+					</div>
+					<div id='divNumero' class='primary'>
+						<label for='numero'>N&uacute;mero: </label>
+						<input type="text" name="numero" id="numero" class='textbox'/>
+					</div>
+					<div id='divComplemento' class='primary'>
+						<label for='complemento'>Complemento: </label>
+						<input type="text" name="complemento" id="complemento" class='textbox'/>
+					</div>
+				<div id='divGrauInstrucaoPaciente' class='primary required'>
+					<label for='grauInstrucaoPaciente'>Grau de Instrução do Paciente:</label>
+					<select name='grauInstrucaoPaciente' id='grauInstrucaoPaciente' style="width:360px;">
+						<option value='ignorado'					> Ignorado	</option>
+						<option value='naoFrequentaEscola'			> Não frequenta a escola  </option>
+						<option value='primarioIncompleto'			> Primário incompleto(até 3ª série fundamental)  </option>
+						<option value='primarioCompleto'			> Primário completo(até 4ª série fundamental)  </option>
+						<option value='ginasioOuFundamentalCompleto'> Ginásio completo ou Fundamental completo  </option>
+						<option value='colegialCompleto'			> Colegial(2º grau) completo / Superior incompleto  </option>
+						<option value='superiorCompleto'			> Superior completo  </option>
+						<option value='posGraduacao'				> Pós graduação  </option>
+					</select>
+				</div>
+				<div id='divGrauInstrucaoChefeFamilia' class='primary required'>
+					<label for='grauInstrucaoChefeFamilia'>Grau de Instrução do chefe de família:</label>
+					<select name='grauInstrucaoChefeFamilia' id='grauInstrucaoChefeFamilia' style="width:360px;">
+						<option value=''					> ----	</option>
+						<option value='analfabetoPrimarioIncompleto'> Analfabeto / primário incompleto (até 3ª série fundamental)  </option>
+						<option value='primarioCompleto'> Primário completo(até 4ª série fundamental)  </option>
+						<option value='ginasialOuFundamentalCompleto'> Ginasial ou Fundamental completo  </option>
+						<option value='colegialOuMedioCompleto'> Colegial ou Médio completo </option>
+						<option value='superiorCompleto'> Superior completo  </option>
+					</select>
+				</div>
+				<div id='divRendaMensalFamiliar' class='primary'>
+					<label for='rendaMensalFamiliar'>Renda mensal da família(Valor em reais. Somar as rendas de todosos familiares): </label>
+					<input type="text" name="rendaMensalFamiliar" id="rendaMensalFamiliar" class='money' size='15'/>
+				</div>
+				<div id='idAquisicaoDeBens' class='primary required'>
+					<label for='aquisicaoDeBens'> Aquisição de Bens </label>
+						<div id='divFreezer' class='primary required'>
+							<label for='freezer'>Freezer(normal ou porta duplex):</label>
+							<select name='freezer' id='freezer' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divGeladeira' class='primary required'>
+							<label for='geladeira'>Geladeira(simples ou duplex):</label>
+							<select name='geladeira' id='geladeira' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divMaquinaLavarRoupa' class='primary required'>
+							<label for='maquinaLavarRoupa'>Máquina de lavar roupa:</label>
+							<select name='maquinaLavarRoupa' id='maquinaLavarRoupa' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divVideoDVD' class='primary required'>
+							<label for='videoDVD'>Vídeo cassete / DVD:</label>
+							<select name='videoDVD' id='videoDVD' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divTelevisao' class='primary required'>
+							<label for='televisao'>Televisão:</label>
+							<select name='televisao' id='televisao' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divRadio' class='primary required'>
+							<label for='radio'>Rádio:</label>
+							<select name='radio' id='radio' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divBanheiro' class='primary required'>
+							<label for='banheiro'>Banheiro:</label>
+							<select name='banheiro' id='banheiro' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divAutomovel' class='primary required'>
+							<label for='automovel'>Automóvel:</label>
+							<select name='automovel' id='automovel' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divEmpregadaMensalista' class='primary required'>
+							<label for='empregadaMensalista'>Empregada Mensalista:</label>
+							<select name='empregadaMensalista' id='empregadaMensalista' class='primary' style='width:176px'>
+								<option value=''	>----		</option>
+								<option value='nao'	>Não		</option>
+								<option value='1'	>1			</option>
+								<option value='2'	>2			</option>
+								<option value='3'	>3			</option>
+								<option value='4'	>4 ou mais	</option>
+							</select>
+						</div>
+						<div id='divClasseSocial' name='divClasseSocial' class='primary required'>
+							<label for='classeSocial'>Classe Social:</label>
+							<input type='text' id='classeSocial' name='classeSocial' size='3' readonly/>
+						</div>
+						<div id='frasesAjuda'>
+							<p><b>Paciente possui geladeira duplex e freezer</b> - Considerar como Geladeira + Freezer</p>
+							<p><b>Paciente possui geladeira duplex, mas não freezer</b> - Considerar como Geladeira + Freezer</p>
+						</div>
+				</fieldset>
+				<fieldset>
+					<legend>Informações sobre a internação</legend>
+						<div id='divMotivoVindaUnidadeSaude' class='primary required'>
+							<label for='motivoVindaUnidadeSaude'>Por que você veio a unidade de saúde para a consulta?</label>
+							<select name='motivoVindaUnidadeSaude' id='motivoVindaUnidadeSaude' class='primary' style='width:176px'>
+								<option value='ignorado'>Ignorado </option>
+								<option value='tosse'>Tosse </option>
+								<option value='febre'>Febre </option>
+								<option value='expectoracao'>Expectoração (catarro) </option>
+								<option value='hemoptoicoHemoptise'>Hemoptóico / Hemoptise </option>
+								<option value='perdaDeApetite'>Perda de apetite </option>
+								<option value='sudoreseNoturna'>Sudorese noturna </option>
+								<option value='dispneia'>Dispnéia </option>
+								<option value='cansaco'>Cansaço(Astenia) </option>
+								<option value='dorNoPeito'>Dor no Peito</option>
+								<option value='chiadoNoPeito'>Chiado no peito</option>
+								<option value='alteracaoRaioX'>Alteração no Raio X</option>
+								<option value='outros'>Outros </option>
+							</select>
+						</div>
+						<div id='divEspecificarMotivoVindaUnidadeSaude' class='secondary'>
+							<label for='especificarMotivoVindaUnidadeSaude'>Especificar: </label>
+							<input type="text" size="30" class="text" name='especificarMotivoVindaUnidadeSaude' id='especificarMotivoVindaUnidadeSaude' />
+						</div>
+						<div id='divProcurouUnidadeSaudePorOrientacao' class='primary required'>
+							<label for='procurouUnidadeSaudePorOrientacao'>Você procurou a unidade de saúde por orientação de alguém?</label>
+							<select name='procurouUnidadeSaudePorOrientacao' id='procurouUnidadeSaudePorOrientacao' class='primary' style='width:176px'>
+								<option value='ignorado'>Ignorado </option>
+								<option value='decidiuSozinho'>Decidiu sozinho</option>
+								<option value='orientadoPorFamiliar'>Orientado por familiar</option>
+								<option value='visitaFamiliar'>Visita familiar</option>
+								<option value='encaminhadoPorOutroServicoDeSaude'>Encaminhado por outro serviço de saúde (hospital,US,serviço privado)</option>
+								<option value='orientacaoNaComunidade'>Orientação na comunidade (varredura, campanhas educativas, reuniões do conselho                            local, jornais do bairro)</option>
+								<option value='outros'>Outros</option>
+							</select>
+						</div>
+						<div id='divEspecificacaoEncaminhamento' class='secondary'>
+							<label for='especificacaoEncaminhamento'>Especificar: </label>
+							<input type='text' class='text' size='30' name='especificacaoEncaminhamento' id='especificacaoEncaminhamento' />
+						</div>
+				</fieldset>
+				<fieldset id='sinais'>
+					<legend>Sinais, sintomas e dados clínicos</legend>
+					<div class="primary" id="divAltura">
+						<label for="altura" class="required">Altura:</label>
+						<input type="text" size="5" maxlength="3" class="number required" name="altura" id="altura" /> cm
+					</div>
+					<div class="primary" id="divPesoAtual">
+						<label for="pesoAtual" class="required">Peso atual:</label>
+						<input type="text" size="5" maxlength="5" class="number required" name="pesoAtual" id="pesoAtual"/> Kg
+					</div>
+					<div class="primary" id="divPesoHabitual">
+						<label for="pesoHabitual" class="required">Peso Habitual:</label>
+						<input type="text" size="5" maxlength="5" class="number required" name="pesoHabitual" id="pesoHabitual"/> Kg
+					</div>
+					<div id='divTempoEmagrecimento' class='secondary'>
+						<label for='tempoEmagrecimento'>Tempo de Emagrecimento:</label>
+						<input type="text" size="5" maxlength="5" class="number required sinais" name="tempoEmagrecimento" id="tempoEmagrecimento"/ > mes(es)
+					</div>
+					<div id='divEmagrecimento' class='primary required'>
+						<label for='emagrecimento'>Emagrecimento:</label>
+						<input type="text" size="10" maxlength="3" class="required sinais" name="emagrecimento" id="emagrecimento" readonly/ >
+					</div>
+					<div class='wrap'>
+						<div id='divTosse' class='primary required sinais'>
+							<label for='tosse'>Tosse:</label>
+							<select name='tosse' id='tosse' class='selectOneSinais sinais'>
+								<option value='nao'> N&atilde;o  </option>
+								<option value='sim'> Sim  </option>
+							</select>
+						</div>
+						<div id='divTempoTosse' class='primary required tempoSinais'>
+							<label for='tempoTosse'>Tempo:</label>
+							<select name='tempoTosse' id='tempoTosse' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div class='wrap'>
+						<div id='divExpectoracao' class='primary required sinais'>
+							<label for='expectoracao'>Expectoração:</label>
+							<select name='espectoracao' id='expectoracao' class='selectOneSinais sinais required'>
+								<option value='ignorado' selected> Ignorado  </option>
+								<option value='nao'> N&atilde;o  </option>
+								<option value='sim'> Sim  </option>
+							</select>
+						</div>
+						<div id='divTempoExpectoracao' class='primary required tempoSinais'>
+							<label for='tempoExpectoracao'>Tempo:</label>
+							<select name='tempoExpectoracao' id='tempoExpectoracao' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div class='wrap'>
+						<div id='divHemoptoico' class='primary required sinais'>
+							<label for='hemoptoico'>Hemoptóico/hemoptise:</label>
+							<select name='hemoptoico' id='hemoptoico' class='selectOneSinais sinais required'>
+								<option value='ignorado' selected> Ignorado  </option>
+								<option value='sim'> Sim  </option>
+								<option value='nao'> N&atilde;o  </option>
+							</select>
+						</div>
+						<div id='divTempoHemoptoico' class='primary required tempoSinais'>
+							<label for='tempoHemoptoico'>Tempo:</label>
+							<select name='tempoHemoptoico' id='tempoHemoptoico' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div class='wrap'>
+						<div id='divSudorese' class='primary required sinais'>
+							<label for='sudorese'>Sudorese Noturna:</label>
+							<select name='sudorese' id='sudorese' class='selectOneSinais sinais required'>
+								<option value='ignorado' selected> Ignorado  </option>
+								<option value='sim'> Sim  </option>
+								<option value='nao'> N&atilde;o  </option>
+							</select>
+						</div>
+						<div id='divTempoSudorese' class='primary required tempoSinais'>
+							<label for='tempoSudorese'>Tempo:</label>
+							<select name='tempoSudorese' id='tempoSudorese' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div class='wrap'>
+						<div id='divFebre' class='primary required sinais'>
+							<label for='febre'>Febre:</label>
+							<select name='febre' id='febre' class='selectOneSinais sinais required'>
+								<option value='ignorado' selected> Ignorado  </option>
+								<option value='sim'> Sim  </option>
+								<option value='nao'> N&atilde;o  </option>
+							</select>
+						</div>
+						<div id='divTempoFebre' class='primary required tempoSinais'>
+							<label for='tempoFebre'>Tempo:</label>
+							<select name='tempoFebre' id='tempoFebre' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div class='wrap'>
+						<div id='divPerdaDeApetite' class='primary required sinais'>
+							<label for='perdaDeApetite'>Perda de Apetite:</label>
+							<select name='perdaDeApetite' id='perdaDeApetite' class='selectOneSinais sinais required'>
+								<option value='ignorado' selected> Ignorado  </option>
+								<option value='sim'> Sim  </option>
+								<option value='nao'> N&atilde;o  </option>
+							</select>
+						</div>
+						<div id='divTempoPerdaDeApetite' class='primary required tempoSinais'>
+							<label for='tempoPerdaDeApetite'>Tempo:</label>
+							<select name='tempoPerdaDeApetite' id='tempoPerdaDeApetite' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div class='wrap'>
+						<div id='divDispneia' class='primary required sinais'>
+							<label for='dispneia'>Dispnéia:</label>
+							<select name='dispneia' id='dispneia' class='selectOneSinais sinais required'>
+								<option value='ignorado' selected> Ignorado  </option>
+								<option value='sim'> Sim  </option>
+								<option value='nao'> N&atilde;o  </option>
+							</select>
+						</div>
+						<div id='divTempoDispneia' class='primary required tempoSinais'>
+							<label for='tempoDispneia'>Tempo:</label>
+							<select name='tempoDispneia' id='tempoDispneia' class='selectOneSinais required'>
+								<option>  ---- </option>
+								<option value='menos1semana'> menos de 1 semana  </option>
+								<option value='1semana'>  1 semana  </option>
+								<option value='2semanas'>  2 semanas  </option>
+								<option value='3semanas'>  3 semanas  </option>
+								<option value='4semanas'>  4 semanas  </option>
+								<option value='5semanas'>  5 semanas  </option>
+								<option value='6semanas'>  6 semanas  </option>
+								<option value='7semanas'>  7 semanas  </option>
+								<option value='8semanas'>  8 semanas  </option>
+								<option value='9semanas'>  9 semanas  </option>
+								<option value='10semanas'> 10 semanas  </option>
+								<option value='11semanas'> 11 semanas  </option>
+								<option value='12semanas'> 12 semanas  </option>
+								<option value='13semanas'> 13 semanas  </option>
+								<option value='14semanas'> 14 semanas  </option>
+								<option value='15semanas'> 15 semanas  </option>
+								<option value='16semanas'> 16 semanas  </option>
+								<option value='17semanas'> 17 semanas  </option>
+								<option value='18semanas'> 18 semanas  </option>
+								<option value='19semanas'> 19 semanas  </option>
+								<option value='20semanas'> 20 semanas  </option>
+								<option value=' 6meses'>  6 meses  </option>
+								<option value=' 7meses'>  7 meses  </option>
+								<option value=' 8meses'>  8 meses  </option>
+								<option value=' 9meses'>  9 meses  </option>
+								<option value='10meses'> 10 meses  </option>
+								<option value='11meses'> 11 meses  </option>
+								<option value='12meses'> 12 meses  </option>
+								<option value='13meses'> 13 meses  </option>
+								<option value='14meses'> 14 meses  </option>
+								<option value='15meses'> 15 meses  </option>
+								<option value='16meses'> 16 meses  </option>
+								<option value='17meses'> 17 meses  </option>
+								<option value='18meses'> 18 meses  </option>
+								<option value='19meses'> 19 meses  </option>
+								<option value='20meses'> 20 meses  </option>
+								<option value='21meses'> 21 meses  </option>
+								<option value='22meses'> 22 meses  </option>
+								<option value='23meses'> 23 meses  </option>
+								<option value='24meses'> 24 meses  </option>
+								<option value='+2anos'> +2 anos  </option>
+								<option value='+3anos'> +3 anos  </option>
+								<option value='+4anos'> +4 anos  </option>
+							</select>
+						</div>
+					</div>
+					<div id='divFaltaAr' class='secondary sinais'>
+						<label for='faltaAr'> Possui ou já possuiu cansaço ou falta de ar em repouso:</label>
+						<select name='faltaAr' id='faltaAr' class='selectOneSinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divCansaco' class='secondary sinais'>
+						<label for='cansaco'> Apresenta cansaço maior do que pessoas de sua idade durante atividades física:</label>
+						<select name='cansaco' id='cansaco' class='selectOneSinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divInterrompeuAtividade' class='secondary sinais'>
+						<label for='interrompeuAtividade'> Já interrompeu alguma atividade do dia-a-dia por cansaço ou falta de ar:</label>
+						<select name='interrompeuAtividade' id='cansaco' class='selectOneSinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divChiado' class='primary required sinais'>
+						<label for='chiado'>Possui ou já possuiu chiado no peito:</label>
+						<select name='chiado' id='chiado' class='selectOneSinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divCoriza' class='primary required sinais'>
+						<label for='coriza'> Coriza, coceira no nariz ou espirros frequentes:</label>
+						<select name='coriza' id='coriza' class='selectOneSinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divAcordaSemAr' class='secondary sinais'>
+						<label for='acordaSemAr'>Já acordou com falta de ar, chiado no peito ou tosse:</label>
+						<select name='acordaSemAr' id='acordaSemAr' class='selectOneSinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset ='historico'>
+					<legend>Histórico de Tuberculose</legend>
+					<div id='divTratamentoAnterior' class='primary required'>
+						<label for='tratamentoAnterior'>Tratamento Anterior para TB:</label>
+						<select name='tratamentoAnterior' id='tratamentoAnterior' class='selectOneSinais sinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divQuantasVezesTratouTB' class='secondary'>
+						<label for='quantasVezesTratouTB'> Quantas vezes tratou de TB:</label>
+						<input  name="quantasVezesTratouTB" id="quantasVezesTratouTB" type="text" class='number' maxlength='2' size='4'/>
+					</div>
+					<div id='divDataUltimoTratamento' class='secondary'>
+						<label for='data_ultimo_tratamento'> Ano do último tratamento:</label>
+						<input  name="data_ultimo_tratamento" id="data_ultimo_tratamento" type="text" class='number' maxlength=4 size='8'/>
+					</div>
+					<div id='divLocalTuberculose' class='secondary'>
+						<label for='divLocalTuberculose'>Local da Tuberculose:</label>
+						<select name='localTuberculose' id='localTuberculose' class='selectOneSinais sinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='pulmonar'> Pulmonar  </option>
+							<option value='extrapulmonar'> Extra-pulmonar  </option>
+							<option value='pulmonarEExtrapulmonar'> Pulmonar e Extra-pulmonar  </option>
+						</select>
+					</div>
+					<div id='divDesfecho' class='secondary'>
+						<label for='desfechoTratamento'>Desfecho do Tratamento:</label>
+						<select name='desfechoTratamento' id='desfechoTratamento' class='selectOneSinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='cura'> Cura  </option>
+							<option value='tratamentoCompleto'> Tratamento Completo (sem exame de escarro)  </option>
+							<option value='abandono'> Abandono  </option>
+							<option value='falencia'> Falência  </option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset id='fsInternacaoHospitar'>
+					<legend>Nos &Uacute;ltimos 2 Anos</legend>
+					<div id='divInternacaoHospitalar' class='primary required'>
+						<label for='internacaoHospitalar'>Internaç&atilde;o Hospitalar:</label>
+						<select name='internacaoHospitalar' id='internacaoHospitalar' class='selectOneSinais sinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divPermanenciaPrisional' class='primary required'>
+						<label for='permanenciaPrisional'>Permanência em instituição prisional ou delegacia</label>
+						<select name='permanenciaPrisional' id='permanenciaPrisional' class='selectOneSinais sinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divPermanenciaCasaApoio' class='primary required'>
+						<label for='permanenciaCasaApoio'>Permanência em casa de apoio(idoso,dependente químico):</label>
+						<select name='permanenciaCasaApoio' id='permanenciaCasaApoio' class='selectOneSinais sinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset id='habitos'>
+					<legend> Hábitos </legend>
+					<div id='divFumante' class='primary required'>
+						<label for='fumante'>Fumante:</label>
+						<select name='fumante' id='fumante' class='selectOne sinais required'>
+							<option> ---- </option>
+							<option value='nao' selected> Jamais Fumou  </option>
+							<option value='exfumante'> Ex-Fumante  </option>
+							<option value='sim'> Sim  </option>
+						</select>
+					</div>
+					<div class="secondary" id="divNumeroCigarros">
+						<label for="numeroCigarros">Número de cigarros que fuma/fumava por dia:</label>
+						<input type="text" size="5" maxlength="3" class="number required" name="numeroCigarros" id='numeroCigarros' /> cigarros
+					</div>
+					<div class="secondary" id="divTempoFumante">
+						<label for="numeroAnosFumante">Há quanto tempo fuma/fumou :</label>
+						<input type="text" size="5" maxlength="2" class="number required" name="numeroAnosFumante" id="numeroAnosFumante"/> anos
+						<input type="text" size="5" maxlength="2" class="number required" name="numeroMesesFumante" id="numeroMesesFumante"/> meses
+					</div>
+					<div id='divCargaTabagistica' class='secondary'>
+						<label for='name'> Carga Tabágica: </label>
+						<input type="text" name="cargaTabagistica" id="cargaTabagistica" class='required' size='4' readonly/> maços/ano
+					</div>
+					<div id='divBebida' class='primary required'>
+						<label for='bebida'>Consome bebidas alcoólicas:</label>
+						<select name='bebida' id='bebida' class='selectOne required'>
+							<option> ---- </option>
+							<option value='nunca' selected> Nunca consumiu  </option>
+							<option value='jaconsumiu'> Já consumiu, mas n&atilde;o mais.  </option>
+							<option value='sim'> Consome </option>
+						</select>
+					</div>
+					<div id='divDiminuirQuantidadeBebida' class='secondary'>
+						<label for='criterio_cage_0'> Já sentiu que deveria diminuir a quantidade de bebida?</label>
+						<select name='criterio_cage_0' id='criterio_cage_0' class='selectOne required criterio_cage'>
+							<option value='nao'		selected > Não 		</option>
+							<option value='sim'				 > Sim  	</option>
+						</select>
+					</div>
+					<div id='divCriticasModoBeber' class='secondary'>
+						<label for='criterio_cage_1'> Recebeu críticas ao modo de beber?</label>
+						<select name='criterio_cage_1' id='criterio_cage_1' class='selectOne required criterio_cage'>
+							<option value='nao'		selected > Não 		</option>
+							<option value='sim'				 > Sim  	</option>
+						</select>
+					</div>
+					<div id='divBebePelaManha' class='secondary'>
+						<label for='criterio_cage_2'> Bebe pela manhã para diminuir o nervosismo ou ressaca?</label>
+						<select name='criterio_cage_2' id='criterio_cage_2' class='selectOne required criterio_cage'>
+							<option value='nao'		selected > Não 		</option>
+							<option value='sim'				 > Sim  	</option>
+						</select>
+					</div>
+					<div id='divCulpadoManeiraBeber' class='secondary'>
+						<label for='criterio_cage_3'> Sente-se culpado pela maneira de beber?</label>
+						<select name='criterio_cage_3' id='criterio_cage_3' class='selectOne required criterio_cage'>
+							<option value='nao'		selected > Não 		</option>
+							<option value='sim'				 > Sim  	</option>
+						</select>
+					</div>
+					<div id='divCriterioCage' class='secondary'>
+						<label for='criterioCage'> Criterio CAGE: </label>
+						<input type="text" name="criterioCage" id="criterioCage" class='required' readonly/>
+					</div>
+				</fieldset>
+				<fieldset id='fsSIDA'>
+					<legend>HIV/SIDA</legend>
+					<div id='divExameSIDA' class='primary required'>
+						<label for='exameSida'>Realizou o exame:</label>
+						<select name='exameSida' id='exameSida' class='selectOne sinais'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divSIDA' class='secondary'>
+						<label for='sida'>Resultado:</label>
+						<select name='sida' id='sida' class='selectOne sinais'>
+							<option value='pendente' selected> Pendente  </option>
+							<option value='sim'> Positivo </option>
+							<option value='nao'> Negativo  </option>
+						</select>
+					</div>
+					<div id='divDataSida' class='secondary'>
+						<label for='data_sida'> Ano do Exame:</label>
+						<input  name="data_sida" id="data_sida" type="text" class='number' maxlength=4 size='8'/>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Desfecho</legend>
+					<div id='divDesfecho' name='divDesfecho' class='primary required'>
+						<label for='desfecho'>Desfecho: </label>
+						<select id='desfecho' name='desfecho' class='required'>
+							<option value=''>----</option>
+							<option value='provavelTB'>Provável TB</option>
+							<option value='provavelTBResistente'>Provável TB Resistente</option>
+							<option value='naoTB'>Não TB</option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Conduta a ser utilizada pela enfermagem</legend>
+					<div id='divExames' name='divExames' class='primary required'>
+						<label for='exames'>Exames: </label>
+						<select id='exames' name='exames' class='required'>
+							<option value=''>----</option>
+							<option value='baar2amostras'>BAAR 2 amostras</option>
+							<option value='raioXDeTorax'>Raio X de tórax</option>
+							<option value='BAARRaioXDeTorax'>BAAR + Raio X de tórax</option>
+							<option value='BAARcultura'>BAAR + cultura</option>
+							<option value='BAARculturaRaioXDeTorax'>BAAR + cultura + Raio X de tórax</option>
+							<option value='outro'>Outro</option>
+						</select>
+					</div>
+					<div id='divOutrosExames' name='divOutrosExames' class='secondary'>
+						<label for='outrosExames'>Outro: </label>
+							<input type='text' id='outrosExames' name='outrosExames' class='required'/>
+					</div>
+					<br /><br />
+					<div id='divOutrasCondutas' class='primary required'>
+						<label for='outrasCondutas' class='labelTextarea'> Outras condutas: </label>
+						<textarea name="outrasCondutas" id="outrasCondutas" rows="5"></textarea>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div id='divAvaliador' class='primary required'>
+						<label for='avaliador'> Avaliado por: </label>
+						<input type="text" name="avaliador" id="avaliador" class='textbox required text'/>
+					</div>
+					<div id='divAvaliacao' class='primary required'>
+						<label for='avaliacao'> Como o entrevistador avalia a confiabilidade das respostas do entrevistado? (0 a 10) </label>
+						<input type='text' name='avaliacao' id='avaliacao' class='number' size='2' maxlength='2'/>
+					</div>
+					<div id='divDataFimTriagem' class='primary required'>
+						<label for='dataFimTriagem'> Data do fim da entevista: </label>
+						<input type="text" name="dataFimTriagem" id="dataFimTriagem" class='textbox required' readonly/>
+					</div>
+					<div id='divHorarioFimEntrevista' class='primary required'>
+						<label for='horarioFimEntrevista'> Horário do fim da entrevista: </label>
+						<input type='text' name='horarioFimEntrevista' id='horarioFimEntrevista' size='6' maxlength='6' readonly/>
+					</div>
+					<div id='fraseAjudaHorario'>
+						<p>O horário do fim da entrevista será preenchido automaticamente ao clicar no botão "Enviar Formulário."</p><br />
+					</div>
+					<div class='submit'><input id="submitButton" value="Enviar Formulário"  class='inputButton'  type="submit"></div>
+				</fieldset>
+			</div><!--/maincontent-->
+		</div><!--/content-->
+	</div><!--/mainFrame-->
+	<div id='dialog-confirm'></div>
+</body>
+</html>
