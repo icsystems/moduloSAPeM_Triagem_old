@@ -20,7 +20,7 @@
 		@import url(./css/styles.css);
 	-->
 	</style>
-	<title>Triagem de Pacientes - Baseline (Ambulatório)</title>
+	<title>Triagem de Pacientes - Implementação (Hospital)</title>
 </head>
 <body>
 	<div id='mainFrame'>
@@ -60,6 +60,14 @@
 					<div id='divDataAssinatura' class='secondary'>
 						<label for='data_assinatura'> Data de assinatura do termo de consentimento (TCLE): </label>
 						<input type="text" name="data_assinatura" id="data_assinatura" class='required data' readonly/>
+					</div>
+					<div id='divCausaInternacao' class='primary required'>
+						<label for='causaInternacao'>Qual a causa da internação?</label>
+						<input type='text' name='causaInternacao' id='causaInternacao' size='30' />
+					</div>
+					<div id='divEncaminhamentoInternacao' class='primary required'>
+						<label for='encaminhamentoInternacao'>Como foi o encaminhamento para a internação?</label>
+						<input type='text' name='encaminhamentoInternacao' id='encaminhamentoInternacao' size='30' />
 					</div>
 				</fieldset>
 				<fieldset id='info_pessoais'>
@@ -134,7 +142,7 @@
 					</div>
 					<div id='divTempoResidenteEstadoAtual' class='primary required'>
 						<label for='tempoResidenteEstadoAtual'>Há quantos anos você reside neste estado? </label>
-						<input type='text' name="tempoResidenteEstadoAtual" id="tempoResidenteEstadoAtual" class='required number' size='3' maxlength='2'> anos
+						<input type='text' name="tempoResidenteEstadoAtual" id="tempoResidenteEstadoAtual" class='number required' size='3' maxlength='2'> anos
 					</div>
 					<div id='divCidade' class='primary required'>
 						<label for='cidade'>Cidade: </label>
@@ -296,44 +304,55 @@
 				</fieldset>
 				<fieldset>
 					<legend>Informações sobre a internação</legend>
-						<div id='divMotivoVindaUnidadeSaude' class='primary required'>
-							<label for='motivoVindaUnidadeSaude'>Por que você veio a unidade de saúde para a consulta?</label>
-							<select name='motivoVindaUnidadeSaude' id='motivoVindaUnidadeSaude' class='primary' style='width:176px'>
-								<option value='ignorado'>Ignorado </option>
-								<option value='tosse'>Tosse </option>
-								<option value='febre'>Febre </option>
-								<option value='expectoracao'>Expectoração (catarro) </option>
-								<option value='hemoptoicoHemoptise'>Hemoptóico / Hemoptise </option>
-								<option value='perdaDeApetite'>Perda de apetite </option>
-								<option value='sudoreseNoturna'>Sudorese noturna </option>
-								<option value='dispneia'>Dispnéia </option>
-								<option value='cansaco'>Cansaço(Astenia) </option>
-								<option value='dorNoPeito'>Dor no Peito</option>
-								<option value='chiadoNoPeito'>Chiado no peito</option>
-								<option value='alteracaoRaioX'>Alteração no Raio X</option>
-								<option value='outros'>Outros </option>
-							</select>
-						</div>
-						<div id='divEspecificarMotivoVindaUnidadeSaude' class='secondary'>
-							<label for='especificarMotivoVindaUnidadeSaude'>Especificar: </label>
-							<input type="text" size="30" class="text" name='especificarMotivoVindaUnidadeSaude' id='especificarMotivoVindaUnidadeSaude' />
-						</div>
-						<div id='divProcurouUnidadeSaudePorOrientacao' class='primary required'>
-							<label for='procurouUnidadeSaudePorOrientacao'>Você procurou a unidade de saúde por orientação de alguém?</label>
-							<select name='procurouUnidadeSaudePorOrientacao' id='procurouUnidadeSaudePorOrientacao' class='primary' style='width:176px'>
-								<option value='ignorado'>Ignorado </option>
-								<option value='decidiuSozinho'>Decidiu sozinho</option>
-								<option value='orientadoPorFamiliar'>Orientado por familiar</option>
-								<option value='visitaFamiliar'>Visita familiar</option>
-								<option value='encaminhadoPorOutroServicoDeSaude'>Encaminhado por outro serviço de saúde (hospital,US,serviço privado)</option>
-								<option value='orientacaoNaComunidade'>Orientação na comunidade (varredura, campanhas educativas, reuniões do conselho                            local, jornais do bairro)</option>
-								<option value='outros'>Outros</option>
-							</select>
-						</div>
-						<div id='divEspecificacaoEncaminhamento' class='secondary'>
-							<label for='especificacaoEncaminhamento'>Especificar: </label>
-							<input type='text' class='text' size='30' name='especificacaoEncaminhamento' id='especificacaoEncaminhamento' />
-						</div>
+					<div id='divCausasNaoMedicas' name='causasNaoMedicas' class='primary required'>
+						<label for='causasNaoMedicas'>Causas não Médicas:</label>
+						<select name='causasNaoMedicas' id='causasNaoMedicas'>
+							<option value='moradorDeRua'>Morador de Rua</option>
+							<option value='alcoolista'>Alcoolista</option>
+							<option value='drogadito'>Drogadito</option>
+							<option value='abandonoFamiliar'>Abandono Familiar</option>
+							<option value='pacientePsiquiatrico'>Paciente Psiquiátrico</option>
+							<option value='decidiuSozinho'>Decidiu sozinho</option>
+							<option value='outros'>Outros</option>
+						</select>
+					</div>
+					<div id='divEspecificarCausasNaoMedicas' class='secondary'>
+						<label for='especificarCausasNaoMedicas'>Especificar:</label>
+						<input type='text' name='especificarCausasNaoMedicas' id='especificarCausasNaoMedicas' class='required'/>
+					</div>
+					<div id='divCausasMedicas' name='causasMedicas' class='primary required'>
+						<label for='causasMedicas'>Causas Médicas:</label>
+						<select name='causasMedicas' id='causasMedicas'>
+							<option value='intoleranciaMedicamentosa'>Intolerância Medicamentosa</option>
+							<option value='hepatiteMedicamentosa'>Hepatite Medicamentosa</option>
+							<option value='desnutricao'>Desnutrição</option>
+							<option value='hemoptise'>Hemoptise</option>
+							<option value='comorbidades'>Comorbidades</option>
+							<option value='transplante'>Transplante</option>
+							<option value='tbExtraPulmonar'>TB Extra Pulmonar</option>
+							<option value='hiv'>HIV</option>
+							<option value='tbPleural'>TB pleural</option>
+							<option value='outros'>Outros</option>
+						</select>
+					</div>
+					<div id='divEspecificarCausasMedicas' class='secondary'>
+						<label for='especificarCausasMedicas'>Especificar:</label>
+						<input type='text' name='especificarCausasMedicas' id='especificarCausasMedicas' class='required'/>
+					</div>
+					<div id='divResponsavelPeloEncaminhamentoParaInternacao' name='divResponsavelPeloEncaminhamentoParaInternacao' class='primary required'>
+						<label for='responsavelPeloEncaminhamentoParaInternacao'>Responsável pelo encaminhamento para a internação:</label>
+						<select name='responsavelPeloEncaminhamentoParaInternacao' id='responsavelPeloEncaminhamentoParaInternacao'>
+							<option value='postoDeSaude'		> Posto de Saúde  			</option>
+							<option value='upa'					> UPA  						</option>
+							<option value='hospital'			> Hospital  				</option>
+							<option value='contatoMedicoMedico'	> Contato médico a médico  	</option>
+							<option value='outros'>Outros</option>
+						</select>
+					</div>
+					<div id='divEspecificarResponsavelPeloEncaminhamentoParaInternacao' class='secondary'>
+						<label for='especificarResponsavelPeloEncaminhamentoParaInternacao'>Especificar:</label>
+						<input type='text' name='especificarResponsavelPeloEncaminhamentoParaInternacao' id='especificarResponsavelPeloEncaminhamentoParaInternacao' class='required'/>
+					</div>
 				</fieldset>
 				<fieldset id='sinais'>
 					<legend>Sinais, sintomas e dados clínicos</legend>
@@ -351,11 +370,11 @@
 					</div>
 					<div id='divTempoEmagrecimento' class='secondary'>
 						<label for='tempoEmagrecimento'>Tempo de Emagrecimento:</label>
-						<input type="text" size="5" maxlength="5" class="number required sinais" name="tempoEmagrecimento" id="tempoEmagrecimento"/ > mes(es)
+						<input type="text" size="5" maxlength="5" class="number required" name="tempoEmagrecimento" id="tempoEmagrecimento"/ > mes(es)
 					</div>
 					<div id='divEmagrecimento' class='primary required'>
 						<label for='emagrecimento'>Emagrecimento:</label>
-						<input type="text" size="10" maxlength="3" class="required sinais" name="emagrecimento" id="emagrecimento" readonly/ >
+						<input type="text" size="10" maxlength="3" class="required" name="emagrecimento" id="emagrecimento" readonly/ >
 					</div>
 					<div class='wrap'>
 						<div id='divTosse' class='primary required sinais'>
@@ -972,42 +991,14 @@
 						<input  name="data_sida" id="data_sida" type="text" class='number' maxlength=4 size='8'/>
 					</div>
 				</fieldset>
-				<fieldset>
-					<legend>Desfecho</legend>
-					<div id='divDesfecho' name='divDesfecho' class='primary required'>
-						<label for='desfecho'>Desfecho: </label>
-						<select id='desfecho' name='desfecho' class='required'>
-							<option value=''>----</option>
-							<option value='provavelTB'>Provável TB</option>
-							<option value='provavelTBResistente'>Provável TB Resistente</option>
-							<option value='naoTB'>Não TB</option>
-						</select>
-					</div>
+				<fieldset id='resultado_rede'>
+					<legend>Resultado da Rede</legend>
+					<div id='divResultadoRede' class='score'><!-- It will be filled after on the fly --></div>
+					<div id='msgResultado'> </div>
+					<div id='msgTosse'></div>
+					<input type='hidden' name='score' id='score' />
 				</fieldset>
-				<fieldset>
-					<legend>Conduta a ser utilizada pela enfermagem</legend>
-					<div id='divExames' name='divExames' class='primary required'>
-						<label for='exames'>Exames: </label>
-						<select id='exames' name='exames' class='required'>
-							<option value=''>----</option>
-							<option value='baar2amostras'>BAAR 2 amostras</option>
-							<option value='raioXDeTorax'>Raio X de tórax</option>
-							<option value='BAARRaioXDeTorax'>BAAR + Raio X de tórax</option>
-							<option value='BAARcultura'>BAAR + cultura</option>
-							<option value='BAARculturaRaioXDeTorax'>BAAR + cultura + Raio X de tórax</option>
-							<option value='outro'>Outro</option>
-						</select>
-					</div>
-					<div id='divOutrosExames' name='divOutrosExames' class='secondary'>
-						<label for='outrosExames'>Outro: </label>
-							<input type='text' id='outrosExames' name='outrosExames' class='required'/>
-					</div>
-					<br /><br />
-					<div id='divOutrasCondutas' class='primary required'>
-						<label for='outrasCondutas' class='labelTextarea'> Outras condutas: </label>
-						<textarea name="outrasCondutas" id="outrasCondutas" rows="5"></textarea>
-					</div>
-				</fieldset>
+
 				<fieldset>
 					<div id='divAvaliador' class='primary required'>
 						<label for='avaliador'> Avaliado por: </label>
