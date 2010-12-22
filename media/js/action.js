@@ -968,7 +968,7 @@ $(document).ready(function(){
 $('#motivoVindaUnidadeSaude').change(function(){
 	if ($(this).val() == 'tosse'){
 		$('#tosse').val('sim');
-		#('#tosse').change();
+		$('#tosse').change();
 	}
 });
 /*------------------------------------------------------------------------------------------------*/
