@@ -982,6 +982,10 @@
 							<option value='nao'> N&atilde;o  </option>
 						</select>
 					</div>
+					<div id='divDataSida' class='secondary'>
+						<label for='data_sida'> Ano do Exame:</label>
+						<input  name="data_sida" id="data_sida" type="text" class='number' maxlength=4 size='8'/>
+					</div>
 					<div id='divSIDA' class='secondary'>
 						<label for='sida'>Resultado:</label>
 						<select name='sida' id='sida' class='selectOne sinais'>
@@ -990,9 +994,17 @@
 							<option value='nao'> Negativo  </option>
 						</select>
 					</div>
-					<div id='divDataSida' class='secondary'>
-						<label for='data_sida'> Ano do Exame:</label>
-						<input  name="data_sida" id="data_sida" type="text" class='number' maxlength=4 size='8'/>
+					<div id='divSIDAUsoAntiRetroviral' class='secondary'>
+						<label for='sidaUsoAntiRetroviral'> Uso de anti-retroviral? </label>
+						<select name='sida' id='sidaUsoAntiRetroviral' class='selectOne required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divDataInicioUsoRetroviral' class='secondary'>
+						<label for='dataInicioUsoRetroviral'> Data de início: </label>
+						<input name='dataInicioUsoRetroviral' id='dataInicioUsoRetroviral' type='text' class='data' size='8'/>
 					</div>
 				</fieldset>
 				<fieldset id='resultado_rede'>
