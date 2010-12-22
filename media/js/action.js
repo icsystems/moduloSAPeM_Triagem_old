@@ -858,12 +858,36 @@ $(document).ready(function(){
 		else
 			$().hideFields(dep);
 	});
-
 	$('#exameSida').change(function(){
-		var dep = new Array();
-		dep[0] = '#divDataSida';
-		dep[1] = '#divSIDA';
+		var dep1 = new Array();
+		dep1[0] = '#divDataSida';
+		dep1[1] = '#divSIDA';
+		var dep2 = new Array();
+		dep2[0] = '#divSIDAUsoAntiRetroviral';
+		dep2[1] = '#divDataInicioUsoRetroviral';
 		// Se sim, disponibilizar colunas listadas a cima
+		if($(this).val()=='sim')
+			$().showFields(dep1);
+		else{
+			$().hideFields(dep1);
+			$().hideFields(dep2);
+		}
+	});
+	$('#sida').change(function(){
+		var dep1 = new Array();
+		dep1[0] = '#divSIDAUsoAntiRetroviral';
+		var dep2 = new Array();
+		dep2[0] = '#divDataInicioUsoRetroviral';
+		if($(this).val()=='sim')
+			$().showFields(dep1);
+		else{
+			$().hideFields(dep1);
+			$().hideFields(dep2);
+		}
+	});
+	$('#sidaUsoAntiRetroviral').change(function(){
+		var dep = new Array();
+		dep[0] = '#divDataInicioUsoRetroviral';
 		if($(this).val()=='sim')
 			$().showFields(dep);
 		else
