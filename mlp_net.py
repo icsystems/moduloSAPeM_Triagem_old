@@ -6,12 +6,13 @@
 
 
 import numpy as np
+import os
 
 class MLP:
 	"""
 		2-Layers MLP implementation
 	"""
-	def __init__(self, input, config_file='conf.npz'):
+	def __init__(self, input, config_file= os.path.dirname(os.path.realpath(__file__)) + '/conf.npz'):
 		config_data  = np.load(config_file)
 		self.W1      = config_data['W1']
 		self.W2      = config_data['W2']
