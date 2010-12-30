@@ -186,7 +186,7 @@ $(document).ready(function(){
 		var numForm = urlArray[urlArray.length-3] - 1;
 		var url = urlbase + 'patientLastRegister/' + numForm + '/' + numPaciente + '/';
 		$.ajax({
-			url: 'https://gruyere.lps.ufrj.br/~fferreira/sapem/healthCenter/name/',
+			url: urlbase + 'healthCenter/name/',
 			dataType : 'text',
 			cache: false,
 			success : function(data){
