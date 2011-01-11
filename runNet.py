@@ -10,8 +10,6 @@ from mlp_net import MLP
 import numpy as np
 
 def runNet():
-	print 'Content-type: text/html'
-	print
 	#Translate input tags
 	fields = (
 		'idade',
@@ -61,6 +59,6 @@ def runNet():
 		else:
 			outcome += u"  'probability': 'alta',"
 	outcome += u" 'threshold' : %.02f }"%(nn.getLimit())
-	sys.stdout.write(outcome.encode('utf-8', 'replace'))
+	return outcome.encode('utf-8', 'replace')
 if __name__ == '__main__':
 	Main()
