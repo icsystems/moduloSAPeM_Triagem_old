@@ -10,8 +10,6 @@ from mlp_net import MLP
 import numpy as np
 
 def runNet():
-	print 'Content-type: text/html'
-	print
 	#Translate input tags
 	fields = (
 		'idade',
