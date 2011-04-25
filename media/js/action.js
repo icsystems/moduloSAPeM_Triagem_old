@@ -443,13 +443,13 @@ $(document).ready(function(){
 /*---------------------------------------------------------------------------------------------------------*/
 	//Make a clock in the page e write date in
 	//a portuguese format
-	$('#form_triagem').submit(function(){
-		if (!ajaxEdicaoCompleto)
-			$('#horarioFimEntrevista').val(getTime());
-	});
-	$('#horarioInicioEntrevista').val(getTime());
-	$('#data_consulta').writePortugueseDate();
-	$('#dataFimTriagem').writePortugueseDate();
+//	$('#form_triagem').submit(function(){
+//		if (!ajaxEdicaoCompleto)
+//			$('#horarioFimEntrevista').val(getTime());
+//	});
+//	$('#horarioInicioEntrevista').val(getTime());
+//	$('#data_consulta').writePortugueseDate();
+//	$('#dataFimTriagem').writePortugueseDate();
 /*---------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------- Neural Netwrok ------------------------------------------------*/
 	//Build birthday calendar
@@ -535,6 +535,38 @@ $(document).ready(function(){
 				}
 			}
 	});
+	$('#data_consulta').datepicker({
+		dateFormat: 'dd MM yy',
+		monthNames: ['de Janeiro de','de Fevereiro de','de Março de','de Abril de','de Maio de','de Junho de','de Julho de','de Agosto de','de Setembro de','de Outubro de','de Novembro de','de Dezembro de'],
+		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Aug','Set','Out','Nov','Dez'],
+		maxDate: '+0d',
+		changeMonth: true,
+		changeYear: true,
+		maxDate   : '+0y',
+		minDate   : '-2y',
+		yearRange : '-130:+130',
+		dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+	});
+	$('#dataFimTriagem').datepicker({
+		dateFormat: 'dd MM yy',
+		monthNames: ['de Janeiro de','de Fevereiro de','de Março de','de Abril de','de Maio de','de Junho de','de Julho de','de Agosto de','de Setembro de','de Outubro de','de Novembro de','de Dezembro de'],
+		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Aug','Set','Out','Nov','Dez'],
+		maxDate: '+0d',
+		changeMonth: true,
+		changeYear: true,
+		maxDate   : '+0y',
+		minDate   : '-2y',
+		yearRange : '-130:+130',
+		dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+	});
+
+	//format time entry
+	$('#horarioInicioEntrevista').timeEntry(
+		{show24Hours: true}
+	);
+	$('#horarioFimEntrevista').timeEntry(
+		{show24Hours: true}
+	);
 	//Submit to the neural network to check the patient's possibility of having TB
 
 	$('select.sinais').change(function(){

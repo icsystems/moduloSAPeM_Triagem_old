@@ -233,3 +233,7 @@ div.tempoSinais{
 div.tempoSinais label{
 	width: 50px;
 }
+
+form div label.error{
+	color:red;
+}
