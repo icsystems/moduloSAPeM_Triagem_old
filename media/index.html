@@ -6,6 +6,8 @@
 	<script type="text/javascript" src="js/jquery.autocomplete.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.js"></script>
 	<script type="text/javascript" src="js/jquery.readonly.js"></script>
+	<script type="text/javascript" src="js/jquery.timeentry.min.js"></script>
+	<script type="text/javascript" src="js/jquery.timeentry-pt.js"></script>
 	<script src='./js/messages_ptbr.js'   type='text/javascript'></script>
 	<script type="text/javascript" src="js/jquery.confirm.js"></script>
 	<script src='./js/tb.validation.jquery.js'   type='text/javascript'></script>
@@ -34,7 +36,7 @@
 					</div>
 					<div id='divHorarioInicioEntrevista' class='primary required'>
 						<label for='horarioInicioEntrevista'> Horário do Inicio da entrevista: </label>
-						<input type='text' name='horarioInicioEntrevista' id='horarioInicioEntrevista' size='6' maxlength='6' readonly/>
+						<input type='text' name='horarioInicioEntrevista' id='horarioInicioEntrevista' size='6' maxlength='5'/>
 					</div>
 					<div id='divUnidade' class='primary required'>
 						<label for='unidade'> Unidade: </label>
@@ -886,6 +888,22 @@
 							<option value='nao'> N&atilde;o  </option>
 						</select>
 					</div>
+					<div id='divContatoTuberculosePositiva' class='primary required'>
+						<label for='contatoTuberculosePositiva'>Contato com TB pulmonar positiva:</label>
+						<select name='contatoTuberculosePositiva' id='contatoTuberculosePositiva' class='selectOneSinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
+					<div id='divContatoTuberculoseResistente' class='primary required'>
+						<label for='contatoTuberculoseResistente'>Contato com TB pulmonar resistente:</label>
+						<select name='contatoTuberculoseResistente' id='contatoTuberculoseResistente' class='selectOneSinais required'>
+							<option value='ignorado' selected> Ignorado  </option>
+							<option value='sim'> Sim  </option>
+							<option value='nao'> N&atilde;o  </option>
+						</select>
+					</div>
 				</fieldset>
 				<fieldset id='habitos'>
 					<legend> Hábitos </legend>
@@ -1011,7 +1029,7 @@
 					</div>
 					<div id='divHorarioFimEntrevista' class='primary required'>
 						<label for='horarioFimEntrevista'> Horário do fim da entrevista: </label>
-						<input type='text' name='horarioFimEntrevista' id='horarioFimEntrevista' size='6' maxlength='6' readonly/>
+						<input type='text' name='horarioFimEntrevista' id='horarioFimEntrevista' size='6' maxlength='5'/>
 					</div>
 					<div id='fraseAjudaHorario'>
 						<p>O horário do fim da entrevista será preenchido automaticamente ao clicar no botão "Enviar Formulário."</p><br />
