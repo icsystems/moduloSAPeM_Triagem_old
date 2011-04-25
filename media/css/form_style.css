@@ -1,17 +1,17 @@
 /* form.css */
-* {
+*{
 	margin: 0;
 	padding: 0;
 }
 
-form {
+form{
 	margin: 0;
 	padding: 0;
 	font-size: 100%;
 	width: 100%;
 }
 
-form fieldset {
+form fieldset{
 	clear: both;
 	font-size: 100%;
 	border-color: #999999;
@@ -21,14 +21,14 @@ form fieldset {
 	margin: 0 0 0 0;
 }
 
-form fieldset legend {
+form fieldset legend{
 	font-size: 150%;
 	font-weight: normal;
 	margin: 0 0 0 0;
 	padding: 0 5px;
 }
 
-label {
+label{
 	font-size: 100%;
 	vertical-align: middle;
 }
@@ -36,18 +36,18 @@ input.textbox{
 	width: 350px;
 }
 
-input, select, textarea {
+input, select, textarea{
 	font-family: Tahoma, Arial, sans-serif;
 	font-size: 100%;
 	color: #000000;
 	vertical-align: middle;
 }
 
-textarea {
+textarea{
 	overflow: auto;
 }
 
-form div {
+form div{
 	clear: left;
 	display: block;
 	height:auto;
@@ -57,7 +57,7 @@ form div {
 	padding: 1px 3px;
 }
 
-form div fieldset {
+form div fieldset{
 	clear: none;
 	border-width: 1px;
 	border-style: solid;
@@ -67,12 +67,12 @@ form div fieldset {
 	width: 400px;
 }
 
-form div fieldset legend {
+form div fieldset legend{
 	font-size: 100%;
 	padding: 0 3px 0 9px;
 }
 
-form div.required fieldset legend {
+form div.required fieldset legend{
 	font-weight: bold;
 }
 
@@ -86,15 +86,15 @@ form div label {
 	vertical-align: middle;
 }
 
-form div.optional label, label.optional {
+form div.optional label, label.optional{
 	font-weight: normal;
 }
 
-form div.required label, label.required {
+form div.required label, label.required{
 	font-weight: bold;
 }
 
-form div label.labelCheckbox, form div label.labelRadio, form div label.labelTextarea {
+form div label.labelCheckbox, form div label.labelRadio, form div label.labelTextarea{
 	float: none;
 	display: block;
 	width: 200px;
@@ -104,7 +104,7 @@ form div label.labelCheckbox, form div label.labelRadio, form div label.labelTex
 	text-align: left;
 }
 
-form div fieldset label.labelCheckbox, form div fieldset label.labelRadio {
+form div fieldset label.labelCheckbox, form div fieldset label.labelRadio{
 	margin: 0 0 5px 0;
 	width: 300px;
 }
@@ -113,7 +113,7 @@ form div fieldset label input.inputOutro{
 	size:200px;
 }
 
-p.error {
+p.error{
 	background-color: #ff0000;
 	background-image: url(/images/icon_error.gif);
 	background-repeat: no-repeat;
@@ -125,7 +125,7 @@ p.error {
 }
 
 
-form div.error {
+form div.error{
 	background-color: #ffffe1;
 	background-image: url(/images/required_bg.gif);
 	background-repeat: no-repeat;
@@ -134,7 +134,7 @@ form div.error {
 	border: 1px solid #ff0000;
 }
 
-form div.error p.error {
+form div.error p.error{
 	background-image: url(/images/icon_error.gif);
 	background-position: top left;
 	background-color: transparent;
@@ -160,19 +160,19 @@ form div textarea{
 }
 
 
-form div select.selectOne, form div select.selectMultiple {
+form div select.selectOne, form div select.selectMultiple{
 	width: 211px;
 	padding: 1px 3px;
 	vertical-align: middle;
 }
 
-form div select.selectOneSinais {
+form div select.selectOneSinais{
 	width: 97px;
 	padding: 1px 3px;
 	vertical-align: middle;
 }
 
-form div input.inputCheckbox, form div input.inputRadio, input.inputCheckbox, input.inputRadio {
+form div input.inputCheckbox, form div input.inputRadio, input.inputCheckbox, input.inputRadio{
 	display: inline;
 	height: auto;
 	width: auto;
@@ -181,13 +181,13 @@ form div input.inputCheckbox, form div input.inputRadio, input.inputCheckbox, in
 	padding: 0;
 	margin: 0 0 0 140px;
 }
-form div.divButton {
+form div.divButton{
 	text-align: center;
 	width: 100%;
 }
 
 
-form div.reset {
+form div.reset{
 	display: inline;
 	float: right;
 	text-align: right;
@@ -197,7 +197,7 @@ form div.reset {
 }
 
 
-form div.submit {
+form div.submit{
 	float: left;
 	width: 40%;
 	margin: 0 0 0 5px;
@@ -232,4 +232,8 @@ div.tempoSinais{
 
 div.tempoSinais label{
 	width: 50px;
+}
+
+form div label.error{
+	color:red;
 }
