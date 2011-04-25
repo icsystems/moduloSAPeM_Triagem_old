@@ -38,57 +38,6 @@
 	};
 })(jQuery);
 
-function argumentsNNet(){
-	this.idade;
-	this.tosse;
-	this.hemoptoico;
-	this.sudorese;
-	this.febre;
-	this.emagrecimento;
-	this.dispneia;
-	this.fumante;
-	this.internacaoHospitalar;
-	this.exameSida;
-	this.sida;
-}
-
-argumentsNNet.prototype.Set = function(
-				idade,
-				tosse,
-				hemoptoico,
-				sudorese,
-				febre,
-				emagrecimento,
-				dispneia,
-				fumante,
-				internacaoHospitalar,
-				exameSida,
-				sida
-){
-	this.idade                   = idade;
-	this.tosse                   = tosse ;
-	this.hemoptoico              = hemoptoico;
-	this.sudorese = sudorese;
-	this.febre = febre;
-	if(emagrecimento == 'Sim') this.emagrecimento = 'sim';
-	else this.emagrecimento = 'nao';
-	this.dispneia = dispneia;
-	this.fumante = fumante;
-	if(fumante != 'sim') this.fumante = 'nao';
-	this.internacaoHospitalar = internacaoHospitalar;
-	if(exameSida == 'nao' || exameSida == 'ignorado'){
-		this.sida = 'ignorado';
-	} else {
-		if(exameSida == 'sim'){
-			if (sida == 'pendente'){
-				this.sida = 'ignorado';
-			}else{
-				this.sida = sida;
-			}
-		}
-	}
-}
-
 function calculateAge(dateStr){
 	var data = new Date();
 	var arrayData = dateStr.split('/');
@@ -439,19 +388,17 @@ $(document).ready(function(){
 	var hlcolor = '#FFF8C6';
 	var d = new Date()
 	var cYear = d.getFullYear();
-	var argNNet = new argumentsNNet();
 /*---------------------------------------------------------------------------------------------------------*/
 	//Make a clock in the page e write date in
 	//a portuguese format
-	$('#form_triagem').submit(function(){
-		if (!ajaxEdicaoCompleto)
-			$('#horarioFimEntrevista').val(getTime());
-	});
-	$('#horarioInicioEntrevista').val(getTime());
-	$('#data_consulta').writePortugueseDate();
-	$('#dataFimTriagem').writePortugueseDate();
+	//$('#form_triagem').submit(function(){
+	//	if (!ajaxEdicaoCompleto)
+	//		$('#horarioFimEntrevista').val(getTime());
+	//});
+	//$('#horarioInicioEntrevista').val(getTime());
+	//$('#data_consulta').writePortugueseDate();
+	//$('#dataFimTriagem').writePortugueseDate();
 /*---------------------------------------------------------------------------------------------------------*/
-/*----------------------------------------- Neural Netwrok ------------------------------------------------*/
 	//Build birthday calendar
 	$('#data_nascimento').datepicker({
 			dateFormat: 'dd/mm/yy',
@@ -470,6 +417,38 @@ $(document).ready(function(){
 				$('#idade').valid();
 			}
 	});
+	//Pick consult date
+	$('#data_consulta').datepicker({
+			dateFormat: 'dd MM yy',
+			monthNames: ['de Janeiro de','de Fevereiro de','de Março de','de Abril de','de Maio de','de Junho de','de Julho de','de Agosto de','de Setembro de','de Outubro de','de Novembro de','de Dezembro de'],
+			monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Aug','Set','Out','Nov','Dez'],
+			maxDate: '+0d',
+			changeMonth: true,
+			changeYear: true,
+			maxDate   : '+0y',
+			minDate   : '-2y',
+			yearRange : '-130:+130',
+			dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+	});
+	$('#dataFimTriagem').datepicker({
+			dateFormat: 'dd MM yy',
+			monthNames: ['de Janeiro de','de Fevereiro de','de Março de','de Abril de','de Maio de','de Junho de','de Julho de','de Agosto de','de Setembro de','de Outubro de','de Novembro de','de Dezembro de'],
+			monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Aug','Set','Out','Nov','Dez'],
+			maxDate: '+0d',
+			changeMonth: true,
+			changeYear: true,
+			maxDate   : '+0y',
+			minDate   : '-2y',
+			yearRange : '-130:+130',
+			dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+	});
+	//format time entry
+	$('#horarioInicioEntrevista').timeEntry(
+		{show24Hours: true}
+	);
+	$('#horarioFimEntrevista').timeEntry(
+		{show24Hours: true}
+	);
 /*---------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 	//Autocomplete years fields
