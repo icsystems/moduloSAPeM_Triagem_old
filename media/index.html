@@ -67,14 +67,6 @@
 						<label for='data_assinatura'> Data de assinatura do termo de consentimento (TCLE): </label>
 						<input type="text" name="data_assinatura" id="data_assinatura" class='required data' readonly/>
 					</div>
-					<div id='divCausaInternacao' class='primary required'>
-						<label for='causaInternacao'>Qual a causa da internação?</label>
-						<input type='text' name='causaInternacao' id='causaInternacao' size='30' />
-					</div>
-					<div id='divEncaminhamentoInternacao' class='primary required'>
-						<label for='encaminhamentoInternacao'>Como foi o encaminhamento para a internação?</label>
-						<input type='text' name='encaminhamentoInternacao' id='encaminhamentoInternacao' size='30' />
-					</div>
 				</fieldset>
 				<fieldset id='info_pessoais'>
 					<legend>Informa&ccedil;&otilde;es Pessoais do Paciente</legend>
@@ -309,7 +301,7 @@
 						</div>
 				</fieldset>
 				<fieldset>
-					<legend>Informações sobre a internação</legend>
+					<legend>Qual a causa da internação</legend>
 					<div id='divCausasNaoMedicas' name='causasNaoMedicas' class='primary required'>
 						<label for='causasNaoMedicas'>Causas não Médicas:</label>
 						<select name='causasNaoMedicas' id='causasNaoMedicas'>
@@ -346,13 +338,13 @@
 						<input type='text' name='especificarCausasMedicas' id='especificarCausasMedicas' class='required'/>
 					</div>
 					<div id='divResponsavelPeloEncaminhamentoParaInternacao' name='divResponsavelPeloEncaminhamentoParaInternacao' class='primary required'>
-						<label for='responsavelPeloEncaminhamentoParaInternacao'>Responsável pelo encaminhamento para a internação:</label>
+						<label for='responsavelPeloEncaminhamentoParaInternacao'>Como foi o encaminhamento para a internação</label>
 						<select name='responsavelPeloEncaminhamentoParaInternacao' id='responsavelPeloEncaminhamentoParaInternacao'>
 							<option value='postoDeSaude'		> Posto de Saúde  			</option>
 							<option value='upa'					> UPA  						</option>
 							<option value='hospital'			> Hospital  				</option>
 							<option value='contatoMedicoMedico'	> Contato médico a médico  	</option>
-							<option value='outros'>Outros</option>
+							<option value='outros'>Outras</option>
 						</select>
 					</div>
 					<div id='divEspecificarResponsavelPeloEncaminhamentoParaInternacao' class='secondary'>
