@@ -761,9 +761,9 @@ $(document).ready(function(){
 		var dep1 = new Array();
 		dep1[0] = '#divEscarroEraPositivo';
 		if ($(this).val() == 'sim')
-			$().showField(dep1);
+			$().showFields(dep1);
 		else
-			$().hideField(dep1);
+			$().hideFields(dep1);
 	});
 	$('#sidaUsoAntiRetroviral').change(function(){
 		var dep = new Array();
