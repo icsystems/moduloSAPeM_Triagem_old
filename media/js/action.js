@@ -758,7 +758,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#contatoTuberculosePositiva').change(function(){
-		var = dep1 = new Array();
+		var dep1 = new Array();
 		dep1[0] = '#divEscarroEraPositivo';
 		if ($(this).val() == 'sim')
 			$().showField(dep1);
