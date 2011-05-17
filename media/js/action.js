@@ -83,6 +83,7 @@ $(document).ready(function(){
 		else
 			urlbase += '/' + urlArray[indexToRunUrlString];
 	urlbase += '/';
+
 	//Relation between forms
 	//Diagnóstico - Triagem e Exames
 	if (urlString.search("edit") != -1){
