@@ -162,7 +162,6 @@ $(document).ready(function(){
 						if($(el)[0].nodeType == xml.ELEMENT_NODE){
 							var tagname = $(el)[0].tagName;
 							idDiv = $('#'+tagname).parent().attr('id');
-							//console.log(tagname + ' : ' + $('#'+tagname).attr('type'));
 							//Checkbox
 							if (tagname == 'sexo')
 								$('input[name=sexo]').each(function(){
@@ -215,7 +214,6 @@ $(document).ready(function(){
 						if($(el)[0].nodeType == xml.ELEMENT_NODE){
 							var tagname = $(el)[0].tagName;
 							idDiv = $('#'+tagname).parent().attr('id');
-							//console.log(tagname + ' : ' + $(el).text());
 							var hlcolor = '#FFF8C6';
 							if (tagname == 'numeroPaciente')
 								$('#' + tagname).val($(el).text());
