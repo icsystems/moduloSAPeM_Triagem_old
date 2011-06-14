@@ -317,6 +317,25 @@ $(document).ready(function(){
 				$(dep[div]).toggle();
 		}
 	}
+	$.fn.showTempoEmagrecimentoField = function(argumento){
+		var dep = argumento;
+		for(div in dep){
+			var elems = $('*', dep[div]);
+			$(elems).each(function(){
+				var element = $(this);
+				if (   element[0].nodeName != 'FIELDSET'
+					&& element[0].nodeName != 'SMALL'
+					&& element[0].nodeName != 'OPTION')
+					$(this).removeAttr('disabled',false);
+				});
+			if($(dep[div]).css('display') != 'block')
+				$(dep[div]).toggle(function() {
+					$(this).css('background-color', hlcolor);
+					$(this).animate({backgroundColor : "white"}, 4000);
+					});
+		}
+	}
+
 
 /* --------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
@@ -790,7 +809,7 @@ $(document).ready(function(){
 		var valorPeso = parseInt($('#pesoHabitual').val(),10);
 		if ((valor != 0)&&(valorPeso != 0))
 			if (valor < valorPeso)
-				$().showFields(dep);
+				$().showTempoEmagrecimentoField(dep);
 			else{
 				$().hideFields(dep);
 				$('#emagrecimento').val('Não');
@@ -803,7 +822,7 @@ $(document).ready(function(){
 		var valorPeso = parseInt($('#pesoAtual').val(),10);
 		if ((valor != 0)&&(valorPeso != 0))
 			if (valorPeso < valor)
-				$().showFields(dep);
+				$().showTempoEmagrecimentoField(dep);
 			else{
 				$().hideFields(dep);
 				$('#emagrecimento').val('Não');
