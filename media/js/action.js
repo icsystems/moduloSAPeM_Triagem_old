@@ -48,8 +48,10 @@ function argumentsNNet(){
 	this.dispneia;
 	this.fumante;
 	this.internacaoHospitalar;
-	this.exameSida;
-	this.sida;
+	//this.exameSida;
+	//this.sida;
+	this.sexo;
+	this.dorToracica;
 }
 
 argumentsNNet.prototype.Set = function(
@@ -62,8 +64,10 @@ argumentsNNet.prototype.Set = function(
 				dispneia,
 				fumante,
 				internacaoHospitalar,
-				exameSida,
-				sida
+				//exameSida,
+				//sida
+				sexo,
+				motivoVindaUnidadeSaude
 ){
 	this.idade                   = idade;
 	this.tosse                   = tosse ;
@@ -71,11 +75,15 @@ argumentsNNet.prototype.Set = function(
 	this.sudorese = sudorese;
 	this.febre = febre;
 	if(emagrecimento == 'Sim') this.emagrecimento = 'sim';
+	else if (emagrecimento == '') this.emagrecimento = 'ignorado';
 	else this.emagrecimento = 'nao';
 	this.dispneia = dispneia;
 	this.fumante = fumante;
 	if(fumante != 'sim') this.fumante = 'nao';
 	this.internacaoHospitalar = internacaoHospitalar;
+	if (motivoVindaUnidadeSaude == 'dorNoPeito') this.dorToracica = 'sim';
+	else this.dorToracica = 'nao';
+	/*
 	if(exameSida == 'nao' || exameSida == 'ignorado'){
 		this.sida = 'ignorado';
 	} else {
@@ -87,6 +95,7 @@ argumentsNNet.prototype.Set = function(
 			}
 		}
 	}
+	*/
 }
 
 function calculateAge(dateStr){
@@ -503,8 +512,11 @@ $(document).ready(function(){
 									$('#dispneia').val(),
 									$('#fumante').val(),
 									$('#internacaoHospitalar').val(),
-									$('#exameSida').val(),
-									$('#sida').val()
+									// RETIRADAS
+									//$('#exameSida').val(),
+									//$('#sida').val()
+									$('input:radio[name=sexo]:checked').val(),
+									$('#motivoVindaUnidadeSaude').val()
 					);
 					$.ajax({
 							url:'./cgi-bin/runNet.py',
@@ -520,7 +532,8 @@ $(document).ready(function(){
 								dispneia: argNNet.dispneia,
 								fuma: argNNet.fumante,
 								internacaoHospitalar: argNNet.internacaoHospitalar,
-								sida: argNNet.sida
+								sexo: argNNet.sexo,
+								dorToracica: argNNet.motivoVindaUnidadeSaude,
 							}),
 							success : function(response){
 								$('#divResultadoRede').html('');
@@ -604,8 +617,10 @@ $(document).ready(function(){
 						$('#dispneia').val(),
 						$('#fumante').val(),
 						$('#internacaoHospitalar').val(),
-						$('#exameSida').val(),
-						$('#sida').val()
+						//$('#exameSida').val(),
+						//$('#sida').val()
+						$('#motivoVindaUnidadeSaude').val(),
+						$('input:radio[name=sexo]:checked').val()
 			);
 			$.ajax({
 				url:'./cgi-bin/runNet.py',
@@ -620,7 +635,8 @@ $(document).ready(function(){
 					dispneia: argNNet.dispneia,
 					fuma: argNNet.fumante,
 					internacaoHospitalar: argNNet.internacaoHospitalar,
-					sida: argNNet.sida
+					sexo: argNNet.sexo,
+					dorToracica: argNNet.motivoVindaUnidadeSaude
 				}),
 				success : function(response){
 					$('#divResultadoRede').html('');
