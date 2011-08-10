@@ -48,8 +48,6 @@ function argumentsNNet(){
 	this.dispneia;
 	this.fumante;
 	this.internacaoHospitalar;
-	//this.exameSida;
-	//this.sida;
 	this.sexo;
 	this.dorToracica;
 }
@@ -64,10 +62,8 @@ argumentsNNet.prototype.Set = function(
 				dispneia,
 				fumante,
 				internacaoHospitalar,
-				//exameSida,
-				//sida
 				sexo,
-				motivoVindaUnidadeSaude
+				dorToracica
 ){
 	this.idade                   = idade;
 	this.tosse                   = tosse ;
@@ -81,21 +77,7 @@ argumentsNNet.prototype.Set = function(
 	this.fumante = fumante;
 	if(fumante != 'sim') this.fumante = 'nao';
 	this.internacaoHospitalar = internacaoHospitalar;
-	if (motivoVindaUnidadeSaude == 'dorNoPeito') this.dorToracica = 'sim';
-	else this.dorToracica = 'nao';
-	/*
-	if(exameSida == 'nao' || exameSida == 'ignorado'){
-		this.sida = 'ignorado';
-	} else {
-		if(exameSida == 'sim'){
-			if (sida == 'pendente'){
-				this.sida = 'ignorado';
-			}else{
-				this.sida = sida;
-			}
-		}
-	}
-	*/
+	this.dorToracica = dorToracica
 }
 
 function calculateAge(dateStr){
@@ -512,11 +494,8 @@ $(document).ready(function(){
 									$('#dispneia').val(),
 									$('#fumante').val(),
 									$('#internacaoHospitalar').val(),
-									// RETIRADAS
-									//$('#exameSida').val(),
-									//$('#sida').val()
 									$('input:radio[name=sexo]:checked').val(),
-									$('#motivoVindaUnidadeSaude').val()
+									$('#dorToracica').val()
 					);
 					$.ajax({
 							url:'./cgi-bin/runNet.py',
@@ -533,7 +512,7 @@ $(document).ready(function(){
 								fuma: argNNet.fumante,
 								internacaoHospitalar: argNNet.internacaoHospitalar,
 								sexo: argNNet.sexo,
-								dorToracica: argNNet.motivoVindaUnidadeSaude,
+								dorToracica: argNNet.dorToracica,
 							}),
 							success : function(response){
 								$('#divResultadoRede').html('');
@@ -617,9 +596,7 @@ $(document).ready(function(){
 						$('#dispneia').val(),
 						$('#fumante').val(),
 						$('#internacaoHospitalar').val(),
-						//$('#exameSida').val(),
-						//$('#sida').val()
-						$('#motivoVindaUnidadeSaude').val(),
+						$('#dorToracica').val(),
 						$('input:radio[name=sexo]:checked').val()
 			);
 			$.ajax({
@@ -636,7 +613,7 @@ $(document).ready(function(){
 					fuma: argNNet.fumante,
 					internacaoHospitalar: argNNet.internacaoHospitalar,
 					sexo: argNNet.sexo,
-					dorToracica: argNNet.motivoVindaUnidadeSaude
+					dorToracica: argNNet.dorToracica
 				}),
 				success : function(response){
 					$('#divResultadoRede').html('');
