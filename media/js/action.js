@@ -52,18 +52,6 @@ function calculateAge(dateStr){
 	if (mes == mesAtual && diaAtual < dia) idade--;
 	return idade;
 }
-//Make a clock
-function getTime(){
-	var time = new Date();
-	var hours = time.getHours();
-	if (hours.toString().length == 1)
-		hours = '0' + hours;
-	var minutes = time.getMinutes();
-	if (minutes.toString().length == 1)
-		minutes = '0' + minutes;
-	var timeStr = hours+':'+minutes;
-	return timeStr;
-}
 
 //After page is loaded set actions
 $(document).ready(function(){
@@ -176,113 +164,7 @@ $(document).ready(function(){
 			}
 		});
 	}
-/*-------------------------------------------------------------------------------*/
-/*--------------------------------- Logica da Classe Social do Paciente --------------------------------------*/
-	$.fn.countPoints = function(){
-		var points = 0;
-		var fields = ['#freezer','#geladeira','#maquinaLavarRoupa',
-					'#videoDVD','#televisao','#radio','#banheiro',
-					'#automovel','#empregadaMensalista'];
-		for (i in fields){
-			field = $(fields[i]);
-			if (field.val() != '' && field.val() != 'nao')
-				fieldValue = parseInt(field.val(),10);
-			else
-				fieldValue = 0;
-			if (fields[i] == '#freezer' || fields[i] == '#videoDVD' || fields[i] == '#maquinaLavarRoupa')
-				if (fieldValue >= 1)
-					points += 2;
-			if (fields[i] == '#geladeira')
-				if (fieldValue >= 1)
-					points += 4;
-			if (fields[i] == '#televisao' || fields[i] == '#radio')
-				if (fieldValue <= 4)
-					points += fieldValue;
-				else
-					points += 4;
-			if (fields[i] == '#banheiro')
-				if (fieldValue >= 1 && fieldValue < 4)
-					points += fieldValue + 3;
-				else if (fieldValue >= 4 )
-					points += 7;
-			if (fields[i] == '#automovel')
-				if (fieldValue == 1)
-					points += 4;
-				else if (fieldValue == 2)
-					points += 7;
-				else if (fieldValue >= 3)
-					points += 9;
-			if (fields[i] == '#empregadaMensalista')
-				if (fieldValue == 1)
-					points += 3;
-				else if (fieldValue >= 2)
-					points += 4;
-		}
-		if ($('#grauInstrucaoChefeFamilia').val() == 'analfabetoPrimarioIncompleto' )
-			points += 0;
-		else if ($('#grauInstrucaoChefeFamilia').val() == 'primarioCompleto' )
-			points += 1;
-		else if ($('#grauInstrucaoChefeFamilia').val() == 'ginasialOuFundamentalCompleto' )
-			points += 2;
-		else if ($('#grauInstrucaoChefeFamilia').val() == 'colegialOuMedioCompleto' )
-			points += 4;
-		else if ($('#grauInstrucaoChefeFamilia').val() == 'superiorCompleto' )
-			points += 8;
-
-		return points;
-	}
-	$.fn.defineSocialClass = function(totalPoints){
-		var points = parseInt(totalPoints,10);
-		var socialClass = '';
-		if (points >= 0 && points <= 7)
-			socialClass = 'E';
-		else if (points >= 8 && points <= 13)
-			socialClass = 'D';
-		else if (points >= 14 && points <= 17)
-			socialClass = 'C2';
-		else if (points >= 18 && points <= 22)
-			socialClass = 'C1';
-		else if (points >= 23 && points <= 28)
-			socialClass = 'B2';
-		else if (points >= 29 && points <= 34)
-			socialClass = 'B1';
-		else if (points >= 35 && points <= 41)
-			socialClass = 'A2';
-		else if (points >= 42 && points <= 46)
-			socialClass = 'A1';
-		return $(this).val(socialClass);
-	}
-	$('#freezer').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#geladeira').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#maquinaLavarRoupa').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#videoDVD').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#televisao').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#radio').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#banheiro').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#automovel').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#empregadaMensalista').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-	$('#grauInstrucaoChefeFamilia').change(function(){
-		$('#classeSocial').defineSocialClass($().countPoints());
-	});
-/* --------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
 /* ---------------------------------------- Funcoes Auxiliares	-------------------------------------------*/
 	$.fn.showFields = function(argumento){
 		var dep = argumento;
@@ -303,6 +185,7 @@ $(document).ready(function(){
 					});
 		}
 	}
+
 	$.fn.hideFields = function(argumento){
 		var dep = argumento;
 		for(div in dep){
@@ -318,7 +201,7 @@ $(document).ready(function(){
 				$(dep[div]).toggle();
 		}
 	}
-	$.fn.showTempoEmagrecimentoField = function(argumento){
+	$.fn.showNotRequiredFields = function(argumento){
 		var dep = argumento;
 		for(div in dep){
 			var elems = $('*', dep[div]);
@@ -335,6 +218,19 @@ $(document).ready(function(){
 					$(this).animate({backgroundColor : "white"}, 4000);
 					});
 		}
+	}
+
+	$.fn.numberWeeks = function(value){
+		if (value.search('semana') != -1)
+			 return parseInt(value.split('semana')[0]);
+		
+		if (value.search('meses') != -1)
+			return parseInt(value.split('meses')[0]) * 4;
+
+		if (value.search('anos') != -1)
+			return parseInt(value.split('anos')[0].split('+')[1]) * 52;
+
+		return 0;
 	}
 
 /* --------------------------------------------------------------------------------------------------------*/
@@ -413,17 +309,7 @@ $(document).ready(function(){
 	var hlcolor = '#FFF8C6';
 	var d = new Date()
 	var cYear = d.getFullYear();
-/*---------------------------------------------------------------------------------------------------------*/
-	//Make a clock in the page e write date in
-	//a portuguese format
-	//$('#form_triagem').submit(function(){
-	//	if (!ajaxEdicaoCompleto)
-	//		$('#horarioFimEntrevista').val(getTime());
-	//});
-	//$('#horarioInicioEntrevista').val(getTime());
-	//$('#data_consulta').writePortugueseDate();
-	//$('#dataFimTriagem').writePortugueseDate();
-/*---------------------------------------------------------------------------------------------------------*/
+
 	//Build birthday calendar
 	$('#data_nascimento').datepicker({
 			dateFormat: 'dd/mm/yy',
@@ -467,13 +353,6 @@ $(document).ready(function(){
 			yearRange : '-130:+130',
 			dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
 	});
-	//format time entry
-	$('#horarioInicioEntrevista').timeEntry(
-		{show24Hours: true}
-	);
-	$('#horarioFimEntrevista').timeEntry(
-		{show24Hours: true}
-	);
 /*---------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 	//Autocomplete years fields
@@ -615,8 +494,6 @@ $(document).ready(function(){
 			}
 	});
 
-
-
 	$('#dispneia').change(function(){
 		var dep = new Array();
 		dep[0] = '#divFaltaAr';
@@ -715,9 +592,13 @@ $(document).ready(function(){
 		dep[1] = '#divDataUltimoTratamento';
 		dep[2] = '#divLocalTuberculose';
 		dep[3] = '#divDesfecho';
+
 		// Se sim, disponibilizar colunas listadas a cima
-		if($(this).val()=='sim')
+		if($(this).val()=='sim'){
 			$().showFields(dep);
+			$('#quantasVezesTratouTB').val('');
+			$('#data_ultimo_tratamento').val('');
+		}
 		else
 			$().hideFields(dep);
 	});
@@ -726,11 +607,21 @@ $(document).ready(function(){
 		dep[0] = '#divNumeroCigarros';
 		dep[1] = '#divTempoFumante';
 		dep[2] = '#divCargaTabagistica';
+		var dep1 = new Array();
+		dep1[0] = '#divTempoParouFumar';
 		// Se sim, disponibilizar colunas listadas a cima
-		if($(this).val()=='sim' || $(this).val()=='exfumante')
+		if($(this).val()=='sim'){
 			$().showFields(dep);
-		else
+			$().hideFields(dep1);
+		}
+		else if ($(this).val() == 'exfumante'){
+			$().showFields(dep);
+			$().showFields(dep1);
+		}
+		else{
 			$().hideFields(dep);
+			$().hideFields(dep1);
+		}
 	});
 	$('#exameSida').change(function(){
 		var dep1 = new Array();
@@ -745,6 +636,7 @@ $(document).ready(function(){
 		else{
 			$().hideFields(dep1);
 			$().hideFields(dep2);
+			$('#sida').val('');
 		}
 	});
 	$('#sida').change(function(){
@@ -795,7 +687,7 @@ $(document).ready(function(){
 		var valorPeso = parseInt($('#pesoHabitual').val(),10);
 		if ((valor != 0)&&(valorPeso != 0))
 			if (valor < valorPeso)
-				$().showTempoEmagrecimentoField(dep);
+				$().showNotRequiredFields(dep);
 			else{
 				$().hideFields(dep);
 				$('#emagrecimento').val('Não');
@@ -808,7 +700,7 @@ $(document).ready(function(){
 		var valorPeso = parseInt($('#pesoAtual').val(),10);
 		if ((valor != 0)&&(valorPeso != 0))
 			if (valorPeso < valor)
-				$().showTempoEmagrecimentoField(dep);
+				$().showNotRequiredFields(dep);
 			else{
 				$().hideFields(dep);
 				$('#emagrecimento').val('Não');
@@ -872,13 +764,346 @@ $(document).ready(function(){
 				$('#emagrecimento').val('Não');
 	});
 /*------------------------------------------------------------------------------------------------*/
+/* -------------------------------- Desfecho e Conduta ------------------------------------------ */
+	$('#quantasVezesTratouTB').change(function(){
+		var prov = new Array();
+		prov[0] = '#divProvavelTbResistente';
+		prov[1] = '#divCondutaProvavelTbResistente';
+
+		var naoProv = new Array();
+		naoProv[0] = '#divNaoProvavelTbResistente';
+
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		if (parseInt($(this).val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#sida').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
+			$().hideFields(naoProv);
+			$().hideFields(consulta);
+			$().hideFields(tosse);
+			$().hideFields(pulmao);
+			$().showNotRequiredFields(prov);
+		}
+		else{
+			$().hideFields(prov);
+			$().showNotRequiredFields(naoProv);
+			
+			if ($().numberWeeks($('#tempoTosse').val()) > 3)
+				$().showNotRequiredFields(tosse);
+			else
+				$().hideFields(tosse);
+
+			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
+				$().showNotRequiredFields(pulmao);
+			else
+				$().hideFields(pulmao);
+
+			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
+				$().showNotRequiredFields(consulta);
+		}
+	});
+
+	$('#contatoTuberculoseResistente').change(function(){
+		var prov = new Array();
+		prov[0] = '#divProvavelTbResistente';
+		prov[1] = '#divCondutaProvavelTbResistente';
+
+		var naoProv = new Array();
+		naoProv[0] = '#divNaoProvavelTbResistente';
+
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#sida').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
+			$().hideFields(naoProv);
+			$().hideFields(consulta);
+			$().hideFields(tosse);
+			$().hideFields(pulmao);
+			$().showNotRequiredFields(prov);
+		}
+		else{
+			$().hideFields(prov);
+			$().showNotRequiredFields(naoProv);
+			
+			if ($().numberWeeks($('#tempoTosse').val()) > 3)
+				$().showNotRequiredFields(tosse);
+			else
+				$().hideFields(tosse);
+
+			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
+				$().showNotRequiredFields(pulmao);
+			else
+				$().hideFields(pulmao);
+
+			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
+				$().showNotRequiredFields(consulta);
+		}
+	});
+
+	$('#sida').change(function(){
+		var prov = new Array();
+		prov[0] = '#divProvavelTbResistente';
+		prov[1] = '#divCondutaProvavelTbResistente';
+
+		var naoProv = new Array();
+		naoProv[0] = '#divNaoProvavelTbResistente';
+
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
+			$().hideFields(naoProv);
+			$().hideFields(consulta);
+			$().hideFields(tosse);
+			$().hideFields(pulmao);
+			$().showNotRequiredFields(prov);
+		}
+		else{
+			$().hideFields(prov);
+			$().showNotRequiredFields(naoProv);
+			
+			if ($().numberWeeks($('#tempoTosse').val()) > 3)
+				$().showNotRequiredFields(tosse);
+			else
+				$().hideFields(tosse);
+
+			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
+				$().showNotRequiredFields(pulmao);
+			else
+				$().hideFields(pulmao);
+
+			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
+				$().showNotRequiredFields(consulta);
+		}
+	});
+
+	$('#permanenciaPrisional').change(function(){
+		var prov = new Array();
+		prov[0] = '#divProvavelTbResistente';
+		prov[1] = '#divCondutaProvavelTbResistente';
+
+		var naoProv = new Array();
+		naoProv[0] = '#divNaoProvavelTbResistente';
+
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#sida').val() == 'sim'){
+			$().hideFields(naoProv);
+			$().hideFields(consulta);
+			$().hideFields(tosse);
+			$().hideFields(pulmao);
+			$().showNotRequiredFields(prov);
+		}
+		else{
+			$().hideFields(prov);
+			$().showNotRequiredFields(naoProv);
+			
+			if ($().numberWeeks($('#tempoTosse').val()) > 3)
+				$().showNotRequiredFields(tosse);
+			else
+				$().hideFields(tosse);
+
+			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
+				$().showNotRequiredFields(pulmao);
+			else
+				$().hideFields(pulmao);
+
+			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
+				$().showNotRequiredFields(consulta);
+		}
+	});
+
+	$('#tempoTosse').change(function(){
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		// is (Nao provavel TB Resistente) being displayed...?
+		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
+
+		if (provavel != -1){
+			if ($().numberWeeks($(this).val()) > 3){
+				$().hideFields(consulta);
+				$().showNotRequiredFields(tosse);
+			}
+			else{
+				$().hideFields(tosse);
+				if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim'){
+					$().hideFields(consulta);
+					$().showNotRequiredFields(pulmao);
+				}
+				else{
+					$().hideFields(pulmao);
+					$().showNotRequiredFields(consulta);
+				}
+			}
+		}
+	});
+
+	$('#dispneia').change(function(){
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		// is (Nao provavel TB Resistente) being displayed...?
+		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
+
+		if (provavel != -1){
+			if ($(this).val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim'){
+				$().hideFields(consulta);
+				$().showNotRequiredFields(pulmao);
+			}
+			else{
+				$().hideFields(pulmao);
+				if ($().numberWeeks($('#tempoTosse').val()) > 3){
+					$().showNotRequiredFields(tosse);
+					$().hideFields(consulta);
+				}
+				else{
+					$().showNotRequiredFields(consulta);
+					$().hideFields(tosse);
+				}
+			}
+		}
+	});
+
+	$('#chiado').change(function(){
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		// is (Nao provavel TB Resistente) being displayed...?
+		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
+
+		if (provavel != -1){
+			if ($(this).val() == 'sim' || $('#dispneia').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim'){
+				$().hideFields(consulta);
+				$().showNotRequiredFields(pulmao);
+			}
+			else{
+				$().hideFields(pulmao);
+				if ($().numberWeeks($('#tempoTosse').val()) > 3){
+					$().showNotRequiredFields(tosse);
+					$().hideFields(consulta);
+				}
+				else{
+					$().showNotRequiredFields(consulta);
+					$().hideFields(tosse);
+				}
+			}
+		}
+	});
+
+	$('#acordaSemAr').change(function(){
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		// is (Nao provavel TB Resistente) being displayed...?
+		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
+
+		if (provavel != -1){
+			if ($(this).val() == 'sim' || $('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#coriza').val() == 'sim'){
+				$().hideFields(consulta);
+				$().showNotRequiredFields(pulmao);
+			}
+			else{
+				$().hideFields(pulmao);
+				if ($().numberWeeks($('#tempoTosse').val()) > 3){
+					$().showNotRequiredFields(tosse);
+					$().hideFields(consulta);
+				}
+				else{
+					$().showNotRequiredFields(consulta);
+					$().hideFields(tosse);
+				}
+			}
+		}
+	});
+
+	$('#coriza').change(function(){
+		var consulta = new Array();
+		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
+
+		var tosse = new Array();
+		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
+
+		var pulmao = new Array();
+		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
+
+		// is (Nao provavel TB Resistente) being displayed...?
+		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
+
+		if (provavel != -1){
+			if ($(this).val() == 'sim' || $('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim'){
+				$().hideFields(consulta);
+				$().showNotRequiredFields(pulmao);
+			}
+			else{
+				$().hideFields(pulmao);
+				if ($().numberWeeks($('#tempoTosse').val()) > 3){
+					$().showNotRequiredFields(tosse);
+					$().hideFields(consulta);
+				}
+				else{
+					$().showNotRequiredFields(consulta);
+					$().hideFields(tosse);
+				}
+			}
+		}
+	});
+/* ---------------------------------------------------------------------------------------------- */
 /*------------------------------------ Logica da Tosse -------------------------------------------*/
-$('#motivoVindaUnidadeSaude').change(function(){
-	if ($(this).val() == 'tosse'){
-		$('#tosse').val('sim');
-		$('#tosse').change();
-	}
-});
+	$('#motivoVindaUnidadeSaude').change(function(){
+		if ($(this).val() == 'tosse'){
+			$('#tosse').val('sim');
+			$('#tosse').change();
+		}
+	});
 /*------------------------------------------------------------------------------------------------*/
 /*------------------------------------ Logica da Bebida ------------------------------------------*/
 	$('#bebida').change(function(){

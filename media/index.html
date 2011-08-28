@@ -23,7 +23,7 @@
 		@import url(./css/jquery.timeentry.css);
 	-->
 	</style>
-	<title>Triagem de Pacientes - Baseline (Ambulatório)</title>
+	<title> Triagem de Pacientes - Resistência </title>
 </head>
 <body>
 	<div id='mainFrame'>
@@ -34,10 +34,6 @@
 					<div id='divDataConsulta' class='primary required'>
 						<label for='data_consulta'> Data da triagem: </label>
 						<input type="text" name="data_consulta" id="data_consulta" class='textbox required' readonly/>
-					</div>
-					<div id='divHorarioInicioEntrevista' class='primary'>
-						<label for='horarioInicioEntrevista'> Horário do Inicio da entrevista: </label>
-						<input type='text' name='horarioInicioEntrevista' id='horarioInicioEntrevista' size='5' maxlength='5' class='hour'/>
 					</div>
 					<div id='divUnidade' class='primary required'>
 						<label for='unidade'> Unidade: </label>
@@ -163,157 +159,11 @@
 						<label for='complemento'>Complemento: </label>
 						<input type="text" name="complemento" id="complemento" class='textbox'/>
 					</div>
-				<div id='divGrauInstrucaoPaciente' class='primary required'>
-					<label for='grauInstrucaoPaciente'>Grau de Instrução do Paciente:</label>
-					<select name='grauInstrucaoPaciente' id='grauInstrucaoPaciente' style="width:360px;">
-						<option value='ignorado'					> Ignorado	</option>
-						<option value='naoFrequentaEscola'			> Não frequenta a escola  </option>
-						<option value='primarioIncompleto'			> Primário incompleto(até 3ª série fundamental)  </option>
-						<option value='primarioCompleto'			> Primário completo(até 4ª série fundamental)  </option>
-						<option value='ginasioOuFundamentalCompleto'> Ginásio completo ou Fundamental completo  </option>
-						<option value='colegialCompleto'			> Colegial(2º grau) completo / Superior incompleto  </option>
-						<option value='superiorCompleto'			> Superior completo  </option>
-						<option value='posGraduacao'				> Pós graduação  </option>
-					</select>
-				</div>
-				<div id='divGrauInstrucaoChefeFamilia' class='primary required'>
-					<label for='grauInstrucaoChefeFamilia'>Grau de Instrução do chefe de família:</label>
-					<select name='grauInstrucaoChefeFamilia' id='grauInstrucaoChefeFamilia' style="width:360px;">
-						<option value=''					> ----	</option>
-						<option value='analfabetoPrimarioIncompleto'> Analfabeto / primário incompleto (até 3ª série fundamental)  </option>
-						<option value='primarioCompleto'> Primário completo(até 4ª série fundamental)  </option>
-						<option value='ginasialOuFundamentalCompleto'> Ginasial ou Fundamental completo  </option>
-						<option value='colegialOuMedioCompleto'> Colegial ou Médio completo </option>
-						<option value='superiorCompleto'> Superior completo  </option>
-					</select>
-				</div>
-				<div id='divRendaMensalFamiliar' class='primary'>
-					<label for='rendaMensalFamiliar'>Renda mensal da família(Valor em reais. Somar as rendas de todosos familiares): </label>
-					<input type="text" name="rendaMensalFamiliar" id="rendaMensalFamiliar" class='money' size='15'/>
-				</div>
-				<div id='idPosseDeItens' class='primary required'>
-					<label for='posseDeItens'> Posse de itens </label>
-						<div id='divFreezer' class='primary required'>
-							<label for='freezer'>Freezer(normal ou porta duplex):</label>
-							<select name='freezer' id='freezer' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divGeladeira' class='primary required'>
-							<label for='geladeira'>Geladeira(simples ou duplex):</label>
-							<select name='geladeira' id='geladeira' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divMaquinaLavarRoupa' class='primary required'>
-							<label for='maquinaLavarRoupa'>Máquina de lavar roupa:</label>
-							<select name='maquinaLavarRoupa' id='maquinaLavarRoupa' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divVideoDVD' class='primary required'>
-							<label for='videoDVD'>Vídeo cassete / DVD:</label>
-							<select name='videoDVD' id='videoDVD' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divTelevisao' class='primary required'>
-							<label for='televisao'>Televisão:</label>
-							<select name='televisao' id='televisao' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divRadio' class='primary required'>
-							<label for='radio'>Rádio:</label>
-							<select name='radio' id='radio' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divBanheiro' class='primary required'>
-							<label for='banheiro'>Banheiro:</label>
-							<select name='banheiro' id='banheiro' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divAutomovel' class='primary required'>
-							<label for='automovel'>Automóvel:</label>
-							<select name='automovel' id='automovel' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divEmpregadaMensalista' class='primary required'>
-							<label for='empregadaMensalista'>Empregada Mensalista:</label>
-							<select name='empregadaMensalista' id='empregadaMensalista' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
-								<option value='nao'		>Não		</option>
-								<option value='1'		>1			</option>
-								<option value='2'		>2			</option>
-								<option value='3'		>3			</option>
-								<option value='4'		>4 ou mais	</option>
-								<option value='ignorado'>Ignorado	</option>
-							</select>
-						</div>
-						<div id='divClasseSocial' name='divClasseSocial' class='primary required'>
-							<label for='classeSocial'>Classe Social:</label>
-							<input type='text' id='classeSocial' name='classeSocial' size='3' readonly/>
-						</div>
-						<div id='frasesAjuda'>
-							<p><b>Paciente possui geladeira duplex e freezer</b> - Considerar como Geladeira + Freezer</p>
-							<p><b>Paciente possui geladeira duplex, mas não freezer</b> - Considerar como Geladeira + Freezer</p>
-						</div>
 				</fieldset>
 				<fieldset>
-					<legend>Qual a causa da consulta</legend>
+					<legend> Sobre a consulta </legend>
 						<div id='divMotivoVindaUnidadeSaude' class='primary required'>
-							<label for='motivoVindaUnidadeSaude'>Por que você veio a unidade de saúde para esta consulta?</label>
+							<label for='motivoVindaUnidadeSaude'>Qual o principal motivo pelo qual veio à unidade de saúde para esta consulta? </label>
 							<select name='motivoVindaUnidadeSaude' id='motivoVindaUnidadeSaude' class='primary' style='width:176px'>
 								<option value='ignorado'>Ignorado </option>
 								<option value='tosse'>Tosse </option>
@@ -935,13 +785,18 @@
 						</select>
 					</div>
 					<div class="secondary" id="divNumeroCigarros">
-						<label for="numeroCigarros">Número de cigarros que fuma/fumava por dia:</label>
+						<label for="numeroCigarros">Número de cigarros que fuma/fumava por dia: </label>
 						<input type="text" size="5" maxlength="3" class="number " name="numeroCigarros" id='numeroCigarros' /> cigarros
 					</div>
 					<div class="secondary" id="divTempoFumante">
-						<label for="numeroAnosFumante">Há quanto tempo fuma/fumou :</label>
+						<label for="numeroAnosFumante">Há quanto tempo fuma/fumou? </label>
 						<input type="text" size="5" maxlength="2" class="number " name="numeroAnosFumante" id="numeroAnosFumante"/> anos
 						<input type="text" size="5" maxlength="2" class="number " name="numeroMesesFumante" id="numeroMesesFumante"/> meses
+					</div>
+					<div class='secondary' id='divTempoParouFumar'>
+						<label for='tempoParouFumar'> Há quanto tempo parou de fumar? </label>
+						<input type='text' size='5' maxlength='2' class='number'/> anos
+						<input type='text' size='5' maxlength='2' class='number' /> meses
 					</div>
 					<div id='divCargaTabagistica' class='secondary'>
 						<label for='name'> Carga Tabágica: </label>
@@ -1025,39 +880,27 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<legend>Desfecho</legend>
-					<div id='divDesfecho' name='divDesfecho' class='primary required'>
-						<label for='desfecho'>Desfecho: </label>
-						<select id='desfecho' name='desfecho' class='required'>
-							<option value=''>----</option>
-							<option value='provavelTB'>Provável TB</option>
-							<option value='provavelTBResistente'>Provável TB Resistente</option>
-							<option value='naoTB'>Não TB</option>
-						</select>
+					<legend>Desfecho </legend>
+					<div id='divProvavelTbResistente' class='secondary'>
+						<label for='desfecho' class='desfecho provavel'> Provável TB Resistente</label>
+					</div>
+					<div id='divNaoProvavelTbResistente'>
+						<label for='desfecho' class='desfecho'> Não provável TB Resistente</label>
 					</div>
 				</fieldset>
 				<fieldset>
-					<legend>Conduta a ser utilizada pela enfermagem</legend>
-					<div id='divExames' name='divExames' class='primary required'>
-						<label for='exames'>Exames: </label>
-						<select id='exames' name='exames' class='required'>
-							<option value=''>----</option>
-							<option value='baar2amostras'>BAAR 2 amostras</option>
-							<option value='raioXDeTorax'>Raio X de tórax</option>
-							<option value='BAARRaioXDeTorax'>BAAR + Raio X de tórax</option>
-							<option value='BAARcultura'>BAAR + cultura</option>
-							<option value='BAARculturaRaioXDeTorax'>BAAR + cultura + Raio X de tórax</option>
-							<option value='outro'>Outro</option>
-						</select>
+					<legend>Conduta </legend>
+					<div id='divCondutaProvavelTbResistente' class='secondary'>
+						<label for='conduta' class='desfecho'> Agilizar realização de BAAR, cultura e teste de sensibilidade </label>
 					</div>
-					<div id='divOutrosExames' name='divOutrosExames' class='secondary'>
-						<label for='outrosExames'>Outro: </label>
-							<input type='text' id='outrosExames' name='outrosExames' class='required'/>
+					<div id='divCondutaNaoProvavelTbResistente_tosse' class='secondary'>
+						<label for='conduta' class='desfecho'> Realizar BAAR e, quando possível, cultura para microbactéria </label>
 					</div>
-					<br /><br />
-					<div id='divOutrasCondutas' class='primary required'>
-						<label for='outrasCondutas' class='labelTextarea'> Outras condutas: </label>
-						<textarea name="outrasCondutas" id="outrasCondutas" rows="5"></textarea>
+					<div id='divCondutaNaoProvavelTbResistente_pulmao' class='secondary'>
+						<label for='conduta' class='desfecho'> Agilizar consulta para médico do pulmão, se possível </label>
+					</div>
+					<div id='divCondutaNaoProvavelTbResistente_consulta'>
+						<label for='conduta' class='desfecho'> Encaminhar para consulta clínico geral <label>
 					</div>
 				</fieldset>
 				<fieldset>
@@ -1072,10 +915,6 @@
 					<div id='divDataFimTriagem' class='primary required'>
 						<label for='dataFimTriagem'> Data do fim da entevista: </label>
 						<input type="text" name="dataFimTriagem" id="dataFimTriagem" class='textbox required' readonly/>
-					</div>
-					<div id='divHorarioFimEntrevista' class='primary'>
-						<label for='horarioFimEntrevista'> Horário do fim da entrevista: </label>
-						<input type='text' name='horarioFimEntrevista' id='horarioFimEntrevista' size='6' maxlength='5'/>
 					</div>
 					<div class='submit'><input id="submitButton" value="Enviar Formulário"  class='inputButton'  type="submit"></div>
 				</fieldset>

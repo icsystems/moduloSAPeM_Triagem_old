@@ -32,6 +32,17 @@ label{
 	font-size: 100%;
 	vertical-align: middle;
 }
+
+label.desfecho{
+	font-size:		11pt;
+	text-align:		center;
+	width:			50%;
+}
+
+label.provavel{
+	color:	#B10000;
+}
+
 input.textbox{
 	width: 350px;
 }
