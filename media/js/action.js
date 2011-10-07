@@ -317,7 +317,7 @@ $(document).ready(function(){
 				$(dep[div]).toggle();
 		}
 	}
-	$.fn.showTempoEmagrecimentoField = function(argumento){
+	$.fn.showNotRequiredFields = function(argumento){
 		var dep = argumento;
 		for(div in dep){
 			var elems = $('*', dep[div]);
@@ -413,16 +413,6 @@ $(document).ready(function(){
 	var hlcolor = '#FFF8C6';
 	var d = new Date()
 	var cYear = d.getFullYear();
-/*---------------------------------------------------------------------------------------------------------*/
-	//Make a clock in the page e write date in
-	//a portuguese format
-	//$('#form_triagem').submit(function(){
-	//	if (!ajaxEdicaoCompleto)
-	//		$('#horarioFimEntrevista').val(getTime());
-	//});
-	//$('#horarioInicioEntrevista').val(getTime());
-	//$('#data_consulta').writePortugueseDate();
-	//$('#dataFimTriagem').writePortugueseDate();
 /*---------------------------------------------------------------------------------------------------------*/
 	//Build birthday calendar
 	$('#data_nascimento').datepicker({
@@ -816,7 +806,7 @@ $(document).ready(function(){
 		var valorPeso = parseInt($('#pesoHabitual').val(),10);
 		if ((valor != 0)&&(valorPeso != 0))
 			if (valor < valorPeso)
-				$().showTempoEmagrecimentoField(dep);
+				$().showNotRequiredFields(dep);
 			else{
 				$().hideFields(dep);
 				$('#emagrecimento').val('Não');
@@ -829,7 +819,7 @@ $(document).ready(function(){
 		var valorPeso = parseInt($('#pesoAtual').val(),10);
 		if ((valor != 0)&&(valorPeso != 0))
 			if (valorPeso < valor)
-				$().showTempoEmagrecimentoField(dep);
+				$().showNotRequiredFields(dep);
 			else{
 				$().hideFields(dep);
 				$('#emagrecimento').val('Não');
