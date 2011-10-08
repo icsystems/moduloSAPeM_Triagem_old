@@ -53,8 +53,8 @@
 					</div>
 					<div id='divPacienteExcluido' class='primary required'>
 						<label for='pacienteExcluido'>Excluído: </label>
-						<select name = "pacienteExcluido" id="pacienteExcluido">
-							<option value=""        >  ----   	</option>
+						<select name = "pacienteExcluido" id="pacienteExcluido" class='required'>
+							<option value=""        >  </option>
 							<option value="sim"		>  Sim   	</option>
 							<option value="nao"		>  Não    	</option>
 							<option value="semTcle"	>  Sem TCLE </option>
@@ -90,7 +90,7 @@
 					<div id='divNaturalidade' class='primary required'>
 						<label for='naturalidade'>Naturalidade: </label>
 						<select name="naturalidade" id="naturalidade" class='required'>
-							<option> ---- </option>
+							<option value=''> </option>
 						</select>
 					</div>
 					<div id='divSexo' class='primary required'>
@@ -107,7 +107,7 @@
 					<div id='divRaca' class='primary required'>
 						<label for='raca'>Cor da pele (expressa pelo paciente): </label>
 						<select name = "raca" id="raca" class='required'>
-							<option              >     ----   </option>
+							<option value=''> </option>
 							<option value="branco">   Branca   </option>
 							<option value="preta">    Preta    </option>
 							<option value="amarela">  Amarela  </option>
@@ -118,7 +118,7 @@
 					<div id='divEstadoCivil' class='primary required'>
 						<label for='estado_civil'>Estado Civil: </label>
 						<select name = "estado_civil"  id="estado_civil" class='required'>
-							<option              >      ----     </option>
+							<option value=''>  </option>
 							<option value="casado">     Casado(a)     </option>
 							<option value="solteiro">   Solteiro(a)   </option>
 							<option value="amigado">    Junto/Amigado(a)   </option>
@@ -136,7 +136,7 @@
 					<div id='divEstado' class='primary required'>
 						<label for='estado'>Estado: </label>
 						<select name="estado" id="estado" class='required address'>
-							<option> ---- </option>
+							<option value=''> </option>
 						</select>
 					</div>
 					<div id='divTempoResidenteEstadoAtual' class='primary required'>
@@ -165,7 +165,8 @@
 					</div>
 				<div id='divGrauInstrucaoPaciente' class='primary required'>
 					<label for='grauInstrucaoPaciente'>Grau de Instrução do Paciente:</label>
-					<select name='grauInstrucaoPaciente' id='grauInstrucaoPaciente' style="width:360px;">
+					<select name='grauInstrucaoPaciente' id='grauInstrucaoPaciente' style="width:360px;" class='required'>
+						<option value=''							> </option>
 						<option value='ignorado'					> Ignorado	</option>
 						<option value='naoFrequentaEscola'			> Não frequenta a escola  </option>
 						<option value='primarioIncompleto'			> Primário incompleto(até 3ª série fundamental)  </option>
@@ -178,8 +179,8 @@
 				</div>
 				<div id='divGrauInstrucaoChefeFamilia' class='primary required'>
 					<label for='grauInstrucaoChefeFamilia'>Grau de Instrução do chefe de família:</label>
-					<select name='grauInstrucaoChefeFamilia' id='grauInstrucaoChefeFamilia' style="width:360px;">
-						<option value=''					> ----	</option>
+					<select name='grauInstrucaoChefeFamilia' id='grauInstrucaoChefeFamilia' style="width:360px;" class='required'>
+						<option value=''> </option>
 						<option value='analfabetoPrimarioIncompleto'> Analfabeto / primário incompleto (até 3ª série fundamental)  </option>
 						<option value='primarioCompleto'> Primário completo(até 4ª série fundamental)  </option>
 						<option value='ginasialOuFundamentalCompleto'> Ginasial ou Fundamental completo  </option>
@@ -195,8 +196,8 @@
 					<label for='posseDeItens'> Posse de itens </label>
 						<div id='divFreezer' class='primary required'>
 							<label for='freezer'>Freezer(normal ou porta duplex):</label>
-							<select name='freezer' id='freezer' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='freezer' id='freezer' class='primary required' style='width:176px'>
+								<option value=''		> 		</option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -207,8 +208,8 @@
 						</div>
 						<div id='divGeladeira' class='primary required'>
 							<label for='geladeira'>Geladeira(simples ou duplex):</label>
-							<select name='geladeira' id='geladeira' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='geladeira' id='geladeira' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -219,8 +220,8 @@
 						</div>
 						<div id='divMaquinaLavarRoupa' class='primary required'>
 							<label for='maquinaLavarRoupa'>Máquina de lavar roupa:</label>
-							<select name='maquinaLavarRoupa' id='maquinaLavarRoupa' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='maquinaLavarRoupa' id='maquinaLavarRoupa' class='primary required' style='width:176px'>
+								<option value=''		>		</option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -231,8 +232,8 @@
 						</div>
 						<div id='divVideoDVD' class='primary required'>
 							<label for='videoDVD'>Vídeo cassete / DVD:</label>
-							<select name='videoDVD' id='videoDVD' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='videoDVD' id='videoDVD' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -243,8 +244,8 @@
 						</div>
 						<div id='divTelevisao' class='primary required'>
 							<label for='televisao'>Televisão:</label>
-							<select name='televisao' id='televisao' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='televisao' id='televisao' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -255,8 +256,8 @@
 						</div>
 						<div id='divRadio' class='primary required'>
 							<label for='radio'>Rádio:</label>
-							<select name='radio' id='radio' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='radio' id='radio' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -267,8 +268,8 @@
 						</div>
 						<div id='divBanheiro' class='primary required'>
 							<label for='banheiro'>Banheiro:</label>
-							<select name='banheiro' id='banheiro' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='banheiro' id='banheiro' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -279,8 +280,8 @@
 						</div>
 						<div id='divAutomovel' class='primary required'>
 							<label for='automovel'>Automóvel:</label>
-							<select name='automovel' id='automovel' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='automovel' id='automovel' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -291,8 +292,8 @@
 						</div>
 						<div id='divEmpregadaMensalista' class='primary required'>
 							<label for='empregadaMensalista'>Empregada Mensalista:</label>
-							<select name='empregadaMensalista' id='empregadaMensalista' class='primary' style='width:176px'>
-								<option value=''		>----		</option>
+							<select name='empregadaMensalista' id='empregadaMensalista' class='primary required' style='width:176px'>
+								<option value=''		> </option>
 								<option value='nao'		>Não		</option>
 								<option value='1'		>1			</option>
 								<option value='2'		>2			</option>
@@ -314,7 +315,8 @@
 					<legend>Qual a causa da consulta</legend>
 						<div id='divMotivoVindaUnidadeSaude' class='primary required'>
 							<label for='motivoVindaUnidadeSaude'>Por que você veio a unidade de saúde para a consulta?</label>
-							<select name='motivoVindaUnidadeSaude' id='motivoVindaUnidadeSaude' class='primary' style='width:176px'>
+							<select name='motivoVindaUnidadeSaude' id='motivoVindaUnidadeSaude' class='primary required' style='width:176px'>
+								<option value=''> </option>
 								<option value='ignorado'>Ignorado </option>
 								<option value='tosse'>Tosse </option>
 								<option value='febre'>Febre </option>
@@ -336,7 +338,8 @@
 						</div>
 						<div id='divProcurouUnidadeSaudePorOrientacao' class='primary required'>
 							<label for='procurouUnidadeSaudePorOrientacao'>Você procurou a unidade de saúde por orientação de alguém?</label>
-							<select name='procurouUnidadeSaudePorOrientacao' id='procurouUnidadeSaudePorOrientacao' class='primary' style='width:176px'>
+							<select name='procurouUnidadeSaudePorOrientacao' id='procurouUnidadeSaudePorOrientacao' class='primary required' style='width:176px'>
+								<option value=''> </option>
 								<option value='ignorado'>Ignorado </option>
 								<option value='decidiuSozinho'>Decidiu sozinho</option>
 								<option value='orientadoPorFamiliar'>Orientado por familiar</option>
@@ -376,7 +379,8 @@
 					<div class='wrap'>
 						<div id='divTosse' class='primary required sinais'>
 							<label for='tosse'>Tosse:</label>
-							<select name='tosse' id='tosse' class='selectOneSinais sinais'>
+							<select name='tosse' id='tosse' class='selectOneSinais sinais required'>
+								<option value=''> </option>
 								<option value='nao'> N&atilde;o  </option>
 								<option value='sim'> Sim  </option>
 							</select>
@@ -384,7 +388,7 @@
 						<div id='divTempoTosse' class='primary required tempoSinais'>
 							<label for='tempoTosse'>Tempo:</label>
 							<select name='tempoTosse' id='tempoTosse' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -443,7 +447,7 @@
 						<div id='divTempoExpectoracao' class='primary required tempoSinais'>
 							<label for='tempoExpectoracao'>Tempo:</label>
 							<select name='tempoExpectoracao' id='tempoExpectoracao' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''>  </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -502,7 +506,7 @@
 						<div id='divTempoHemoptoico' class='primary required tempoSinais'>
 							<label for='tempoHemoptoico'>Tempo:</label>
 							<select name='tempoHemoptoico' id='tempoHemoptoico' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -561,7 +565,7 @@
 						<div id='divTempoSudorese' class='primary required tempoSinais'>
 							<label for='tempoSudorese'>Tempo:</label>
 							<select name='tempoSudorese' id='tempoSudorese' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -620,7 +624,7 @@
 						<div id='divTempoFebre' class='primary required tempoSinais'>
 							<label for='tempoFebre'>Tempo:</label>
 							<select name='tempoFebre' id='tempoFebre' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -679,7 +683,7 @@
 						<div id='divTempoPerdaDeApetite' class='primary required tempoSinais'>
 							<label for='tempoPerdaDeApetite'>Tempo:</label>
 							<select name='tempoPerdaDeApetite' id='tempoPerdaDeApetite' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -738,7 +742,7 @@
 						<div id='divTempoDispneia' class='primary required tempoSinais'>
 							<label for='tempoDispneia'>Tempo:</label>
 							<select name='tempoDispneia' id='tempoDispneia' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -795,7 +799,7 @@
 						<div id='divTempoDorToracica' class='primary required tempoSinais'>
 							<label for='tempoDorToracica'>Tempo:</label>
 							<select name='tempoDorToracica' id='tempoDorToracica' class='selectOneSinais required'>
-								<option>  ---- </option>
+								<option value=''> </option>
 								<option value='menos1semana'> menos de 1 semana  </option>
 								<option value='1semana'>  1 semana  </option>
 								<option value='2semanas'>  2 semanas  </option>
@@ -985,7 +989,6 @@
 					<div id='divFumante' class='primary required'>
 						<label for='fumante'>Fumante:</label>
 						<select name='fumante' id='fumante' class='selectOne sinais required'>
-							<option> ---- </option>
 							<option value='nao' selected> Jamais Fumou  </option>
 							<option value='exfumante'> Ex-Fumante  </option>
 							<option value='sim'> Sim  </option>
@@ -1007,7 +1010,6 @@
 					<div id='divBebida' class='primary required'>
 						<label for='bebida'>Consome bebidas alcoólicas:</label>
 						<select name='bebida' id='bebida' class='selectOne required'>
-							<option> ---- </option>
 							<option value='nunca' selected> Nunca consumiu  </option>
 							<option value='jaconsumiu'> Já consumiu, mas n&atilde;o mais.  </option>
 							<option value='sim'> Consome </option>
