@@ -768,334 +768,71 @@ $(document).ready(function(){
 	$('#quantasVezesTratouTB').change(function(){
 		var prov = new Array();
 		prov[0] = '#divProvavelTbResistente';
-		prov[1] = '#divCondutaProvavelTbResistente';
 
 		var naoProv = new Array();
 		naoProv[0] = '#divNaoProvavelTbResistente';
 
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
 		if (parseInt($(this).val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#sida').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
 			$().hideFields(naoProv);
-			$().hideFields(consulta);
-			$().hideFields(tosse);
-			$().hideFields(pulmao);
 			$().showNotRequiredFields(prov);
 		}
 		else{
 			$().hideFields(prov);
 			$().showNotRequiredFields(naoProv);
-			
-			if ($().numberWeeks($('#tempoTosse').val()) > 3)
-				$().showNotRequiredFields(tosse);
-			else
-				$().hideFields(tosse);
-
-			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
-				$().showNotRequiredFields(pulmao);
-			else
-				$().hideFields(pulmao);
-
-			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
-				$().showNotRequiredFields(consulta);
 		}
 	});
 
 	$('#contatoTuberculoseResistente').change(function(){
 		var prov = new Array();
 		prov[0] = '#divProvavelTbResistente';
-		prov[1] = '#divCondutaProvavelTbResistente';
 
 		var naoProv = new Array();
 		naoProv[0] = '#divNaoProvavelTbResistente';
 
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
 		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#sida').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
 			$().hideFields(naoProv);
-			$().hideFields(consulta);
-			$().hideFields(tosse);
-			$().hideFields(pulmao);
 			$().showNotRequiredFields(prov);
 		}
 		else{
 			$().hideFields(prov);
 			$().showNotRequiredFields(naoProv);
-			
-			if ($().numberWeeks($('#tempoTosse').val()) > 3)
-				$().showNotRequiredFields(tosse);
-			else
-				$().hideFields(tosse);
-
-			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
-				$().showNotRequiredFields(pulmao);
-			else
-				$().hideFields(pulmao);
-
-			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
-				$().showNotRequiredFields(consulta);
 		}
 	});
 
 	$('#sida').change(function(){
 		var prov = new Array();
 		prov[0] = '#divProvavelTbResistente';
-		prov[1] = '#divCondutaProvavelTbResistente';
 
 		var naoProv = new Array();
 		naoProv[0] = '#divNaoProvavelTbResistente';
 
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
 		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
 			$().hideFields(naoProv);
-			$().hideFields(consulta);
-			$().hideFields(tosse);
-			$().hideFields(pulmao);
 			$().showNotRequiredFields(prov);
 		}
 		else{
 			$().hideFields(prov);
 			$().showNotRequiredFields(naoProv);
-			
-			if ($().numberWeeks($('#tempoTosse').val()) > 3)
-				$().showNotRequiredFields(tosse);
-			else
-				$().hideFields(tosse);
-
-			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
-				$().showNotRequiredFields(pulmao);
-			else
-				$().hideFields(pulmao);
-
-			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
-				$().showNotRequiredFields(consulta);
 		}
 	});
 
 	$('#permanenciaPrisional').change(function(){
 		var prov = new Array();
 		prov[0] = '#divProvavelTbResistente';
-		prov[1] = '#divCondutaProvavelTbResistente';
 
 		var naoProv = new Array();
 		naoProv[0] = '#divNaoProvavelTbResistente';
 
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
 		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#sida').val() == 'sim'){
 			$().hideFields(naoProv);
-			$().hideFields(consulta);
-			$().hideFields(tosse);
-			$().hideFields(pulmao);
 			$().showNotRequiredFields(prov);
 		}
 		else{
 			$().hideFields(prov);
 			$().showNotRequiredFields(naoProv);
-			
-			if ($().numberWeeks($('#tempoTosse').val()) > 3)
-				$().showNotRequiredFields(tosse);
-			else
-				$().hideFields(tosse);
-
-			if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim')
-				$().showNotRequiredFields(pulmao);
-			else
-				$().hideFields(pulmao);
-
-			if ($('#divCondutaNaoProvavelTbResistente_tosse').attr('style').search('display: none') != -1 && $('#divCondutaNaoProvavelTbResistente_pulmao').attr('style').search('display: none') != -1)
-				$().showNotRequiredFields(consulta);
 		}
 	});
 
-	$('#tempoTosse').change(function(){
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
-		// is (Nao provavel TB Resistente) being displayed...?
-		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
-
-		if (provavel != -1){
-			if ($().numberWeeks($(this).val()) > 3){
-				$().hideFields(consulta);
-				$().showNotRequiredFields(tosse);
-			}
-			else{
-				$().hideFields(tosse);
-				if ($('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim'){
-					$().hideFields(consulta);
-					$().showNotRequiredFields(pulmao);
-				}
-				else{
-					$().hideFields(pulmao);
-					$().showNotRequiredFields(consulta);
-				}
-			}
-		}
-	});
-
-	$('#dispneia').change(function(){
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
-		// is (Nao provavel TB Resistente) being displayed...?
-		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
-
-		if (provavel != -1){
-			if ($(this).val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim'){
-				$().hideFields(consulta);
-				$().showNotRequiredFields(pulmao);
-			}
-			else{
-				$().hideFields(pulmao);
-				if ($().numberWeeks($('#tempoTosse').val()) > 3){
-					$().showNotRequiredFields(tosse);
-					$().hideFields(consulta);
-				}
-				else{
-					$().showNotRequiredFields(consulta);
-					$().hideFields(tosse);
-				}
-			}
-		}
-	});
-
-	$('#chiado').change(function(){
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
-		// is (Nao provavel TB Resistente) being displayed...?
-		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
-
-		if (provavel != -1){
-			if ($(this).val() == 'sim' || $('#dispneia').val() == 'sim' || $('#acordaSemAr').val() == 'sim' || $('#coriza').val() == 'sim'){
-				$().hideFields(consulta);
-				$().showNotRequiredFields(pulmao);
-			}
-			else{
-				$().hideFields(pulmao);
-				if ($().numberWeeks($('#tempoTosse').val()) > 3){
-					$().showNotRequiredFields(tosse);
-					$().hideFields(consulta);
-				}
-				else{
-					$().showNotRequiredFields(consulta);
-					$().hideFields(tosse);
-				}
-			}
-		}
-	});
-
-	$('#acordaSemAr').change(function(){
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
-		// is (Nao provavel TB Resistente) being displayed...?
-		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
-
-		if (provavel != -1){
-			if ($(this).val() == 'sim' || $('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#coriza').val() == 'sim'){
-				$().hideFields(consulta);
-				$().showNotRequiredFields(pulmao);
-			}
-			else{
-				$().hideFields(pulmao);
-				if ($().numberWeeks($('#tempoTosse').val()) > 3){
-					$().showNotRequiredFields(tosse);
-					$().hideFields(consulta);
-				}
-				else{
-					$().showNotRequiredFields(consulta);
-					$().hideFields(tosse);
-				}
-			}
-		}
-	});
-
-	$('#coriza').change(function(){
-		var consulta = new Array();
-		consulta[0] = '#divCondutaNaoProvavelTbResistente_consulta';
-
-		var tosse = new Array();
-		tosse[0] = '#divCondutaNaoProvavelTbResistente_tosse';
-
-		var pulmao = new Array();
-		pulmao[0] = '#divCondutaNaoProvavelTbResistente_pulmao';
-
-		// is (Nao provavel TB Resistente) being displayed...?
-		provavel = $('#divProvavelTbResistente').attr('style').search('display: none');
-
-		if (provavel != -1){
-			if ($(this).val() == 'sim' || $('#dispneia').val() == 'sim' || $('#chiado').val() == 'sim' || $('#acordaSemAr').val() == 'sim'){
-				$().hideFields(consulta);
-				$().showNotRequiredFields(pulmao);
-			}
-			else{
-				$().hideFields(pulmao);
-				if ($().numberWeeks($('#tempoTosse').val()) > 3){
-					$().showNotRequiredFields(tosse);
-					$().hideFields(consulta);
-				}
-				else{
-					$().showNotRequiredFields(consulta);
-					$().hideFields(tosse);
-				}
-			}
-		}
-	});
 /* ---------------------------------------------------------------------------------------------- */
 /*------------------------------------ Logica da Tosse -------------------------------------------*/
 	$('#motivoVindaUnidadeSaude').change(function(){
