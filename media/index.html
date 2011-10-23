@@ -882,19 +882,33 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<legend>Desfecho </legend>
-					<div id='divProvavelTbResistente' class='secondary'>
-						<label for='desfecho' class='desfecho provavel'> Provável TB Resistente</label>
-					</div>
-					<div id='divNaoProvavelTbResistente'>
-						<label for='desfecho' class='desfecho'> Não provável TB Resistente</label>
+					<legend> Desfecho </legend>
+					<div id="divAnaliseEntrevistador" class="primary">
+						<label for="analiseEntrevistador" class="required"> Análise do entrevistador: </label>
+						<select name="analiseEntrevistador" id="analiseEntrevistador" class="required">
+							<option value=""						> </option>
+							<option value="provavelTBresistente"	> Provável TB resistente </option>
+							<option value="naoProvavelTBresistente" > Não provável TB resistente </option>
+						</select>
 					</div>
 				</fieldset>
 				<fieldset>
-					<legend>Conduta </legend>
-					<div id='divConduta' class='required'>
-						<label for='conduta'> Conduta: </label>
-						<input type='text' class='required text'/>
+					<legend> Conduta a ser realizada </legend>
+					<div id='divConduta' class='primary'>
+						<label for='exames' class="required"> Exames: </label>
+						<select name="exames" id="exames" class="required">
+							<option value=""						> </option>
+							<option value="baar2amostras"			> BAAR 2 amostras </option>
+							<option value="raioxtorax"				> Raio X de toráx </option>
+							<option value="baar+raioxtorax"			> BAAR + Raio X de toráx </option>
+							<option value="baar+cultura"			> BAAR + cultura </option>
+							<option value="baar+cultura+raioxtorax"	> BAAR + cultura + Raio X de toráx </option>
+							<option value="outro"					> Outro </option>
+						</select>
+					</div>
+					<div id="divOutrosExames" class="secondary">
+						<label for="outrosExames"> Outros exames: </label>
+						<input type="text" name="outrosExames" id="outrosExames" class="textbox text"/>
 					</div>
 				</fieldset>
 				<fieldset>

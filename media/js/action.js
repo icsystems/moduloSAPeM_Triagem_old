@@ -677,6 +677,15 @@ $(document).ready(function(){
 				$().hideFields(dep);
 	});
 
+	$("#exames").change(function(){
+		var dep = new Array();
+		dep[0] = "divOutrosExames";
+		if ($(this).val() == 'outro')
+			$().showFields(dep);
+		else
+			$().hideFields(dep);
+	});
+
 /*------------------------------------------------------------------------------------------------*/
 /*---------------------------------- Logica  do Emagrecimento ------------------------------------*/
 	// Check emagrecimento field
@@ -764,76 +773,7 @@ $(document).ready(function(){
 				$('#emagrecimento').val('Não');
 	});
 /*------------------------------------------------------------------------------------------------*/
-/* -------------------------------- Desfecho e Conduta ------------------------------------------ */
-	$('#quantasVezesTratouTB').change(function(){
-		var prov = new Array();
-		prov[0] = '#divProvavelTbResistente';
 
-		var naoProv = new Array();
-		naoProv[0] = '#divNaoProvavelTbResistente';
-
-		if (parseInt($(this).val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#sida').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
-			$().hideFields(naoProv);
-			$().showNotRequiredFields(prov);
-		}
-		else{
-			$().hideFields(prov);
-			$().showNotRequiredFields(naoProv);
-		}
-	});
-
-	$('#contatoTuberculoseResistente').change(function(){
-		var prov = new Array();
-		prov[0] = '#divProvavelTbResistente';
-
-		var naoProv = new Array();
-		naoProv[0] = '#divNaoProvavelTbResistente';
-
-		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#sida').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
-			$().hideFields(naoProv);
-			$().showNotRequiredFields(prov);
-		}
-		else{
-			$().hideFields(prov);
-			$().showNotRequiredFields(naoProv);
-		}
-	});
-
-	$('#sida').change(function(){
-		var prov = new Array();
-		prov[0] = '#divProvavelTbResistente';
-
-		var naoProv = new Array();
-		naoProv[0] = '#divNaoProvavelTbResistente';
-
-		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#permanenciaPrisional').val() == 'sim'){
-			$().hideFields(naoProv);
-			$().showNotRequiredFields(prov);
-		}
-		else{
-			$().hideFields(prov);
-			$().showNotRequiredFields(naoProv);
-		}
-	});
-
-	$('#permanenciaPrisional').change(function(){
-		var prov = new Array();
-		prov[0] = '#divProvavelTbResistente';
-
-		var naoProv = new Array();
-		naoProv[0] = '#divNaoProvavelTbResistente';
-
-		if ($(this).val() == 'sim' || parseInt($('#quantasVezesTratouTB').val()) > 2 || $('#contatoTuberculoseResistente').val() == 'sim' || $('#sida').val() == 'sim'){
-			$().hideFields(naoProv);
-			$().showNotRequiredFields(prov);
-		}
-		else{
-			$().hideFields(prov);
-			$().showNotRequiredFields(naoProv);
-		}
-	});
-
-/* ---------------------------------------------------------------------------------------------- */
 /*------------------------------------ Logica da Tosse -------------------------------------------*/
 	$('#motivoVindaUnidadeSaude').change(function(){
 		if ($(this).val() == 'tosse'){
