@@ -341,18 +341,6 @@ $(document).ready(function(){
 			yearRange : '-130:+130',
 			dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
 	});
-	$('#dataFimTriagem').datepicker({
-			dateFormat: 'dd MM yy',
-			monthNames: ['de Janeiro de','de Fevereiro de','de Março de','de Abril de','de Maio de','de Junho de','de Julho de','de Agosto de','de Setembro de','de Outubro de','de Novembro de','de Dezembro de'],
-			monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Aug','Set','Out','Nov','Dez'],
-			maxDate: '+0d',
-			changeMonth: true,
-			changeYear: true,
-			maxDate   : '+0y',
-			minDate   : '-2y',
-			yearRange : '-130:+130',
-			dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-	});
 /*---------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 	//Autocomplete years fields
