@@ -578,9 +578,6 @@ $(document).ready(function(){
 	});
 
 	//format time entry
-	$('#horarioInicioEntrevista').timeEntry(
-		{show24Hours: true}
-	);
 	$('#horarioFimEntrevista').timeEntry(
 		{show24Hours: true}
 	);
