@@ -310,7 +310,7 @@
 				<fieldset>
 					<legend>Qual a causa da consulta</legend>
 						<div id='divMotivoVindaUnidadeSaude' class='primary required'>
-							<label for='motivoVindaUnidadeSaude'>Por que você veio a unidade de saúde para a consulta?</label>
+							<label for='motivoVindaUnidadeSaude'>Qual é o principal motivo pelo qual você veio para esta consulta?</label>
 							<select name='motivoVindaUnidadeSaude' id='motivoVindaUnidadeSaude' class='primary required' style='width:176px'>
 								<option value=''> </option>
 								<option value='ignorado'>Ignorado </option>
@@ -365,8 +365,8 @@
 						<input type="text" size="5" maxlength="5" class="number" name="pesoHabitual" id="pesoHabitual"/> Kg
 					</div>
 					<div id='divTempoEmagrecimento' class='secondary'>
-						<label for='tempoEmagrecimento'>Tempo de Emagrecimento:</label>
-						<input type="text" size="5" maxlength="5" class="number" name="tempoEmagrecimento" id="tempoEmagrecimento"/ > mes(es)
+						<label for='tempoEmagrecimentoSemanas'>Tempo de Emagrecimento:</label>
+						<input type="text" size="5" maxlength="5" class="number" name="tempoEmagrecimentoSemanas" id="tempoEmagrecimentoSemanas"/ > semana(s)
 					</div>
 					<div id='divEmagrecimento' class='primary'>
 						<label for='emagrecimento'>Emagrecimento:</label>
@@ -986,7 +986,8 @@
 					<div id='divFumante' class='primary required'>
 						<label for='fumante'>Fumante:</label>
 						<select name='fumante' id='fumante' class='selectOne sinais required'>
-							<option value='nao' selected> Jamais Fumou  </option>
+							<option value=''> </option>
+							<option value='nao'> Jamais Fumou  </option>
 							<option value='exfumante'> Ex-Fumante  </option>
 							<option value='sim'> Sim  </option>
 						</select>
@@ -1000,6 +1001,11 @@
 						<input type="text" size="5" maxlength="2" class="number " name="numeroAnosFumante" id="numeroAnosFumante"/> anos
 						<input type="text" size="5" maxlength="2" class="number " name="numeroMesesFumante" id="numeroMesesFumante"/> meses
 					</div>
+					<div class="secondary" id="divTempoExFumante">
+						<label for="numeroAnosExFumante">Há quanto tempo parou de fumar :</label>
+						<input type="text" size="5" maxlength="2" class="number " name="numeroAnosExFumante" id="numeroAnosExFumante"/> anos
+						<input type="text" size="5" maxlength="2" class="number " name="numeroMesesExFumante" id="numeroMesesExFumante"/> meses
+					</div>
 					<div id='divCargaTabagistica' class='secondary'>
 						<label for='name'> Carga Tabágica: </label>
 						<input type="text" name="cargaTabagistica" id="cargaTabagistica" class='' size='4' readonly/> maços/ano
@@ -1007,7 +1013,8 @@
 					<div id='divBebida' class='primary required'>
 						<label for='bebida'>Consome bebidas alcoólicas:</label>
 						<select name='bebida' id='bebida' class='selectOne required'>
-							<option value='nunca' selected> Nunca consumiu  </option>
+							<option value=''> </option>
+							<option value='nunca'> Nunca consumiu  </option>
 							<option value='jaconsumiu'> Já consumiu, mas n&atilde;o mais.  </option>
 							<option value='sim'> Consome </option>
 						</select>
@@ -1069,7 +1076,7 @@
 					</div>
 					<div id='divSIDAUsoAntiRetroviral' class='secondary'>
 						<label for='sidaUsoAntiRetroviral'> Uso de anti-retroviral? </label>
-						<select name='sida' id='sidaUsoAntiRetroviral' class='selectOne required'>
+						<select name='sidaUsoAntiRetroviral' id='sidaUsoAntiRetroviral' class='selectOne required'>
 							<option value='ignorado' selected> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
@@ -1083,30 +1090,36 @@
 				<fieldset id='resultado_rede'>
 					<legend>Resultado da Rede</legend>
 					<div id='divResultadoRede' class='score'><!-- It will be filled after on the fly --></div>
-					<div id='msgResultado'> </div>
 					<div id='msgTosse'></div>
 					<input type='hidden' name='score' id='score' />
 				</fieldset>
-
+				<fieldset id='conduta'>
+					<legend> Conduta a ser realizada </legend>
+					<div id='divConduta' class='primary'>
+						<label for='exames' class='required'> Exames: </label>
+						<select name='exames' id='exames' class='required'>
+							<option value=''> </option>
+							<option value='baar2amostras'> BAAR 2 amostras </option>
+							<option value='raioxtorax'> Raio X de toráx </option>
+							<option value='baar+raioxtorax'> BAAR + Raio X de toráx </option>
+							<option value='baar+cultura'> BAAR + Cultura </option>
+							<option value='baar+cultura+raioxtorax'> BAAR + Cultura + Raio X de toráx </option>
+							<option value='outro'> Outro </option>
+						</select>
+					</div>
+					<div id='divOutrasCondutas' class='secondary'>
+						<label for='outrasCondutas'> Outras condutas: </label>
+						<input type='text' id='outrasCondutas' name='outrasCondutas' class='textbox text'/>
+					</div>
+				</fieldset>
 				<fieldset>
+					<div id='divAvaliacao' class='primary required'>
+						<label for='avaliacao'> Como o entrevistador avalia as respostas da entrevista realizada? (0 a 10) </label>
+						<input type='text' name='avaliacao' id='avaliacao' class='number' size='2' maxlength='2'/>
+					</div>
 					<div id='divAvaliador' class='primary required'>
 						<label for='avaliador'> Avaliado por: </label>
 						<input type="text" name="avaliador" id="avaliador" class='textbox required text'/>
-					</div>
-					<div id='divAvaliacao' class='primary required'>
-						<label for='avaliacao'> Como o entrevistador avalia a confiabilidade das respostas do entrevistado? (0 a 10) </label>
-						<input type='text' name='avaliacao' id='avaliacao' class='number' size='2' maxlength='2'/>
-					</div>
-					<div id='divDataFimTriagem' class='primary required'>
-						<label for='dataFimTriagem'> Data do fim da entevista: </label>
-						<input type="text" name="dataFimTriagem" id="dataFimTriagem" class='textbox required' readonly/>
-					</div>
-					<div id='divHorarioFimEntrevista' class='primary required'>
-						<label for='horarioFimEntrevista'> Horário do fim da entrevista: </label>
-						<input type='text' name='horarioFimEntrevista' id='horarioFimEntrevista' size='5' maxlength='5' class='hour'/>
-					</div>
-					<div id='fraseAjudaHorario'>
-						<p>O horário do fim da entrevista será preenchido automaticamente ao clicar no botão "Enviar Formulário."</p><br />
 					</div>
 					<div class='submit'><input id="submitButton" value="Enviar Formulário"  class='inputButton'  type="submit"></div>
 				</fieldset>
