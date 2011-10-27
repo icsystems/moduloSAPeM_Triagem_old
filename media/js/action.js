@@ -704,7 +704,7 @@ $(document).ready(function(){
 			}
 	});
 	$('#pesoAtual').change(function(){
-		var tempoEmagrecimento = parseInt($('#tempoEmagrecimento').val(),10);
+		var tempoEmagrecimento = parseInt($('#tempoEmagrecimentoSemanas').val(),10) / 4;
 		var percentagem = (parseInt($('#pesoHabitual').val(),10) - parseInt($('#pesoAtual').val(),10))/parseInt($('#pesoHabitual').val(),10);
 		if (tempoEmagrecimento >= 1 && tempoEmagrecimento < 3)
 			if(percentagem > 0.05)
@@ -723,7 +723,7 @@ $(document).ready(function(){
 				$('#emagrecimento').val('Não');
 	});
 	$('#pesoHabitual').change(function(){
-		var tempoEmagrecimento = parseInt($('#tempoEmagrecimento').val(),10);
+		var tempoEmagrecimento = parseInt($('#tempoEmagrecimentoSemanas').val(),10) / 4;
 		var percentagem = (parseInt($('#pesoHabitual').val(),10) - parseInt($('#pesoAtual').val(),10))/parseInt($('#pesoHabitual').val(),10);
 		if (tempoEmagrecimento >= 1 && tempoEmagrecimento < 3)
 			if(percentagem > 0.05)
@@ -741,8 +741,8 @@ $(document).ready(function(){
 			else
 				$('#emagrecimento').val('Não');
 	});
-	$('#tempoEmagrecimento').change(function(){
-		var tempoEmagrecimento = parseInt($('#tempoEmagrecimento').val(),10);
+	$('#tempoEmagrecimentoSemanas').change(function(){
+		var tempoEmagrecimento = parseInt($('#tempoEmagrecimentoSemanas').val(),10) / 4;
 		var percentagem = (parseInt($('#pesoHabitual').val(),10) - parseInt($('#pesoAtual').val(),10))/parseInt($('#pesoHabitual').val(),10);
 		if (tempoEmagrecimento >= 1 && tempoEmagrecimento < 3)
 			if(percentagem > 0.05)
