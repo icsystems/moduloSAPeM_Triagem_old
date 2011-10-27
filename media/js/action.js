@@ -425,10 +425,7 @@ $(document).ready(function(){
 			success : function(response){
 				$('#divResultadoRede').html('');
 				var msg = $('<div />');
-				var msgOrientacao = $('#msgResultado');
-				msgOrientacao.html('');
 				if(response.TB == 'no'){
-					msgOrientacao.append('Se Doença Pulmonar(Asma brônquica, DPOC, Bronquiectasia), agilizar consulta com médico do pulmão. Caso contrário, encaminhar para consulta com clínico geral.');
 					msg.append($('<strong />')
 						.append('O paciente não possui TB')
 					);
@@ -439,19 +436,15 @@ $(document).ready(function(){
 					);
 					if(response.probability == 'baixa') { 
 						msg.css('border', '10px green solid');
-						msgOrientacao.append('Encaminhar para o clínico geral.');
 					} else if (response.probability == 'média') {
 						msg.css('border', '10px yellow solid');
-						msgOrientacao.append('Agilizar realização de BAAR.');
 					} else if(response.probability == 'alta'){
 						msg.css('border', '10px red solid');
-						msgOrientacao.append('Agilizar realização de BAAR e cultura (quando disponível), e consulta com médico da TB ou do pulmão.');
 					}
 					msg.css('padding', '15px');
 					msg.css('width', '650px');
 					$('#score').val(response.probability);
 				}
-				'O paciente não possui TB';
 				$('#divResultadoRede').append(msg);
 			}
 		});
@@ -574,26 +567,6 @@ $(document).ready(function(){
 		yearRange : '-130:+130',
 		dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
 	});
-	$('#dataFimTriagem').datepicker({
-		dateFormat: 'dd MM yy',
-		monthNames: ['de Janeiro de','de Fevereiro de','de Março de','de Abril de','de Maio de','de Junho de','de Julho de','de Agosto de','de Setembro de','de Outubro de','de Novembro de','de Dezembro de'],
-		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Aug','Set','Out','Nov','Dez'],
-		maxDate: '+0d',
-		changeMonth: true,
-		changeYear: true,
-		maxDate   : '+0y',
-		minDate   : '-2y',
-		yearRange : '-130:+130',
-		dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-	});
-
-	//format time entry
-	$('#horarioInicioEntrevista').timeEntry(
-		{show24Hours: true}
-	);
-	$('#horarioFimEntrevista').timeEntry(
-		{show24Hours: true}
-	);
 
 	//Submit to the neural network to check the patient's possibility of having TB
 	$('select.sinais').change(function(){
@@ -886,11 +859,22 @@ $(document).ready(function(){
 		dep[0] = '#divNumeroCigarros';
 		dep[1] = '#divTempoFumante';
 		dep[2] = '#divCargaTabagistica';
+		
+		var dep1 = new Array();
+		dep1[0] = '#divTempoExFumante';
 		// Se sim, disponibilizar colunas listadas a cima
-		if($(this).val()=='sim' || $(this).val()=='exfumante')
+		if($(this).val()=='sim'){
 			$().showFields(dep);
-		else
+			$().hideFields(dep1);
+		}
+		else if ($(this).val() == 'exfumante'){
+			$().showFields(dep);
+			$().showFields(dep1);
+		}
+		else{
 			$().hideFields(dep);
+			$().hideFields(dep1);
+		}
 		$().neuralNetwork();
 	});
 	$('#exameSida').change(function(){
@@ -944,6 +928,16 @@ $(document).ready(function(){
 			else
 				$().hideFields(dep);
 	});
+
+	$('#exames').change(function(){
+		var dep = new Array();
+		dep[0] = '#divOutrasCondutas';
+
+		if ($(this).val() == 'outro')
+			$().showFields(dep);
+		else
+			$().hideFields(dep);
+	});
 /*------------------------------------------------------------------------------------------------*/
 /*---------------------------------- Logica  do Emagrecimento ------------------------------------*/
 	// Check emagrecimento field
@@ -978,7 +972,7 @@ $(document).ready(function(){
 	});
 
 	$('#pesoAtual').change(function(){
-		var tempoEmagrecimento = parseInt($('#tempoEmagrecimento').val(),10);
+		var tempoEmagrecimento = parseInt($('#tempoEmagrecimentoSemanas').val(),10) / 4;
 		var percentagem = (parseInt($('#pesoHabitual').val(),10) - parseInt($('#pesoAtual').val(),10))/parseInt($('#pesoHabitual').val(),10);
 		if (tempoEmagrecimento >= 1 && tempoEmagrecimento < 3)
 			if(percentagem > 0.05)
@@ -999,7 +993,7 @@ $(document).ready(function(){
 	});
 
 	$('#pesoHabitual').change(function(){
-		var tempoEmagrecimento = parseInt($('#tempoEmagrecimento').val(),10);
+		var tempoEmagrecimento = parseInt($('#tempoEmagrecimentoSemanas').val(),10) / 4;
 		var percentagem = (parseInt($('#pesoHabitual').val(),10) - parseInt($('#pesoAtual').val(),10))/parseInt($('#pesoHabitual').val(),10);
 		if (tempoEmagrecimento >= 1 && tempoEmagrecimento < 3)
 			if(percentagem > 0.05)
@@ -1019,8 +1013,8 @@ $(document).ready(function(){
 		$().neuralNetwork();
 	});
 
-	$('#tempoEmagrecimento').change(function(){
-		var tempoEmagrecimento = parseInt($('#tempoEmagrecimento').val(),10);
+	$('#tempoEmagrecimentoSemanas').change(function(){
+		var tempoEmagrecimento = parseInt($('#tempoEmagrecimentoSemanas').val(),10) / 4;
 		var percentagem = (parseInt($('#pesoHabitual').val(),10) - parseInt($('#pesoAtual').val(),10))/parseInt($('#pesoHabitual').val(),10);
 		if (tempoEmagrecimento >= 1 && tempoEmagrecimento < 3)
 			if(percentagem > 0.05)
