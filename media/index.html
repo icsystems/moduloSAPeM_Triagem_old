@@ -113,6 +113,7 @@
 							<option value="amarela">  Amarela  </option>
 							<option value="parda">    Parda    </option>
 							<option value="Indígena"> Indígena </option>
+							<option value="ignorado"> Ignorado </option>
 						</select>
 					</div>
 					<div id='divEstadoCivil' class='primary required'>
@@ -181,6 +182,7 @@
 					<label for='grauInstrucaoChefeFamilia'>Grau de Instrução do chefe de família:</label>
 					<select name='grauInstrucaoChefeFamilia' id='grauInstrucaoChefeFamilia' style="width:360px;" class='required'>
 						<option value=''					> </option>
+						<option value='ignorado'			> Ignorado </option>
 						<option value='analfabetoPrimarioIncompleto'> Analfabeto / primário incompleto (até 3ª série fundamental)  </option>
 						<option value='primarioCompleto'> Primário completo(até 4ª série fundamental)  </option>
 						<option value='ginasialOuFundamentalCompleto'> Ginasial ou Fundamental completo  </option>
@@ -381,6 +383,7 @@
 							<label for='tosse'>Tosse:</label>
 							<select name='tosse' id='tosse' class='selectOneSinais sinais required'>
 								<option value=''> </option>
+								<option value='ignorado'> Ignorado </option>
 								<option value='nao'> N&atilde;o  </option>
 								<option value='sim'> Sim  </option>
 							</select>
@@ -432,6 +435,7 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
@@ -439,7 +443,8 @@
 						<div id='divExpectoracao' class='primary required sinais'>
 							<label for='expectoracao'>Expectoração:</label>
 							<select name='expectoracao' id='expectoracao' class='selectOneSinais sinais required'>
-								<option value='ignorado' selected> Ignorado  </option>
+								<option value=''> </option>
+								<option value='ignorado'> Ignorado  </option>
 								<option value='nao'> N&atilde;o  </option>
 								<option value='sim'> Sim  </option>
 							</select>
@@ -491,6 +496,7 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
@@ -498,7 +504,8 @@
 						<div id='divHemoptoico' class='primary required sinais'>
 							<label for='hemoptoico'>Catarro com sangue:</label>
 							<select name='hemoptoico' id='hemoptoico' class='selectOneSinais sinais required'>
-								<option value='ignorado' selected> Ignorado  </option>
+								<option value=''> </option>
+								<option value='ignorado'> Ignorado  </option>
 								<option value='sim'> Sim  </option>
 								<option value='nao'> N&atilde;o  </option>
 							</select>
@@ -550,6 +557,7 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
@@ -557,7 +565,8 @@
 						<div id='divSudorese' class='primary required sinais'>
 							<label for='sudorese'>Suor Noturno:</label>
 							<select name='sudorese' id='sudorese' class='selectOneSinais sinais required'>
-								<option value='ignorado' selected> Ignorado  </option>
+								<option value=''> </option>
+								<option value='ignorado'> Ignorado  </option>
 								<option value='sim'> Sim  </option>
 								<option value='nao'> N&atilde;o  </option>
 							</select>
@@ -609,6 +618,7 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
@@ -616,7 +626,8 @@
 						<div id='divFebre' class='primary required sinais'>
 							<label for='febre'>Febre:</label>
 							<select name='febre' id='febre' class='selectOneSinais sinais required'>
-								<option value='ignorado' selected> Ignorado  </option>
+								<option value=''></option>
+								<option value='ignorado'> Ignorado  </option>
 								<option value='sim'> Sim  </option>
 								<option value='nao'> N&atilde;o  </option>
 							</select>
@@ -668,6 +679,7 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
@@ -675,7 +687,8 @@
 						<div id='divPerdaDeApetite' class='primary required sinais'>
 							<label for='perdaDeApetite'>Perda de Apetite:</label>
 							<select name='perdaDeApetite' id='perdaDeApetite' class='selectOneSinais sinais required'>
-								<option value='ignorado' selected> Ignorado  </option>
+								<option value=''> </option>
+								<option value='ignorado'> Ignorado  </option>
 								<option value='sim'> Sim  </option>
 								<option value='nao'> N&atilde;o  </option>
 							</select>
@@ -727,6 +740,7 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
@@ -734,7 +748,8 @@
 						<div id='divDispneia' class='primary required sinais'>
 							<label for='dispneia'>Falta de ar:</label>
 							<select name='dispneia' id='dispneia' class='selectOneSinais sinais required'>
-								<option value='ignorado' selected> Ignorado  </option>
+								<option value=''> </option>
+								<option value='ignorado'> Ignorado  </option>
 								<option value='sim'> Sim  </option>
 								<option value='nao'> N&atilde;o  </option>
 							</select>
@@ -786,13 +801,15 @@
 								<option value='+2anos'> +2 anos  </option>
 								<option value='+3anos'> +3 anos  </option>
 								<option value='+4anos'> +4 anos  </option>
+								<option value='ignorado'> Ignorado </option>
 							</select>
 						</div>
 					</div>
 					<div id='divFaltaAr' class='secondary sinais'>
 						<label for='faltaAr'> Possui ou já possuiu cansaço ou falta de ar em repouso:</label>
 						<select name='faltaAr' id='faltaAr' class='selectOneSinais'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -800,6 +817,7 @@
 					<div id='divCansaco' class='secondary sinais'>
 						<label for='cansaco'> Apresenta cansaço maior do que pessoas de sua idade durante atividades física:</label>
 						<select name='cansaco' id='cansaco' class='selectOneSinais'>
+							<option value=''></option>
 							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> Não  </option>
@@ -807,8 +825,9 @@
 					</div>
 					<div id='divInterrompeuAtividade' class='secondary sinais'>
 						<label for='interrompeuAtividade'> Já interrompeu alguma atividade do dia-a-dia por cansaço ou falta de ar:</label>
-						<select name='interrompeuAtividade' id='cansaco' class='selectOneSinais'>
-							<option value='ignorado' selected> Ignorado  </option>
+						<select name='interrompeuAtividade' id='interrompeuAtividade' class='selectOneSinais'>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -816,7 +835,8 @@
 					<div id='divChiado' class='primary required sinais'>
 						<label for='chiado'>Possui ou já possuiu chiado no peito:</label>
 						<select name='chiado' id='chiado' class='selectOneSinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -824,7 +844,8 @@
 					<div id='divAcordaSemAr' class='secondary sinais'>
 						<label for='acordaSemAr'>Já acordou com falta de ar, chiado no peito ou tosse:</label>
 						<select name='acordaSemAr' id='acordaSemAr' class='selectOneSinais'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -832,7 +853,8 @@
 					<div id='divCoriza' class='primary required sinais'>
 						<label for='coriza'> Coriza, coceira no nariz ou espirros frequentes:</label>
 						<select name='coriza' id='coriza' class='selectOneSinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -843,7 +865,8 @@
 					<div id='divTratamentoAnterior' class='primary required'>
 						<label for='tratamentoAnterior'>Tratamento Anterior para TB:</label>
 						<select name='tratamentoAnterior' id='tratamentoAnterior' class='selectOneSinais sinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -859,7 +882,8 @@
 					<div id='divLocalTuberculose' class='secondary'>
 						<label for='divLocalTuberculose'>Local da Tuberculose:</label>
 						<select name='localTuberculose' id='localTuberculose' class='selectOneSinais sinais'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='pulmonar'> Pulmonar  </option>
 							<option value='extrapulmonar'> Extra-pulmonar  </option>
 							<option value='pulmonarEExtrapulmonar'> Pulmonar e Extra-pulmonar  </option>
@@ -868,7 +892,8 @@
 					<div id='divDesfecho' class='secondary'>
 						<label for='desfechoTratamento'>Desfecho do Tratamento:</label>
 						<select name='desfechoTratamento' id='desfechoTratamento' class='selectOneSinais'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''></option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='cura'> Cura  </option>
 							<option value='tratamentoCompleto'> Tratamento Completo (sem exame de escarro)  </option>
 							<option value='abandono'> Abandono  </option>
@@ -881,7 +906,8 @@
 					<div id='divInternacaoHospitalar' class='primary required'>
 						<label for='internacaoHospitalar'>Internaç&atilde;o Hospitalar:</label>
 						<select name='internacaoHospitalar' id='internacaoHospitalar' class='selectOneSinais sinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''> </option>
+							<option value='ignorado' > Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -889,7 +915,8 @@
 					<div id='divPermanenciaPrisional' class='primary required'>
 						<label for='permanenciaPrisional'>Permanência em instituição prisional ou delegacia</label>
 						<select name='permanenciaPrisional' id='permanenciaPrisional' class='selectOneSinais sinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -897,7 +924,8 @@
 					<div id='divPermanenciaCasaApoio' class='primary required'>
 						<label for='permanenciaCasaApoio'>Permanência em casa de apoio(idoso,dependente químico):</label>
 						<select name='permanenciaCasaApoio' id='permanenciaCasaApoio' class='selectOneSinais sinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -905,7 +933,8 @@
 					<div id='divContatoTuberculosePositiva' class='primary required'>
 						<label for='contatoTuberculosePositiva'>Contato com TB pulmonar positiva:</label>
 						<select name='contatoTuberculosePositiva' id='contatoTuberculosePositiva' class='selectOneSinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -913,7 +942,8 @@
 					<div id='divEscarroEraPositivo' class='secondary'>
 						<label for='escarroEraPositivo'> O escarro era positivo: </label>
 						<select name='escarroEraPositivo' id='escarroEraPositivo' class='selectOneSinais'>
-							<option value='ignorado' selected> Ignorado </option>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado </option>
 							<option value='sim'> Sim </option>
 							<option value='nao'> N&atilde;o </option>
 						</select>
@@ -921,7 +951,8 @@
 					<div id='divContatoTuberculoseResistente' class='primary required'>
 						<label for='contatoTuberculoseResistente'>Contato com TB pulmonar resistente:</label>
 						<select name='contatoTuberculoseResistente' id='contatoTuberculoseResistente' class='selectOneSinais required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -933,9 +964,10 @@
 						<label for='fumante'>Fumante:</label>
 						<select name='fumante' id='fumante' class='selectOne sinais required'>
 							<option value=''> </option>
-							<option value='nao' selected> Jamais Fumou  </option>
+							<option value='nao'> Jamais Fumou  </option>
 							<option value='exfumante'> Ex-Fumante  </option>
 							<option value='sim'> Sim  </option>
+							<option value='ignorado'> Ignorado </option>
 						</select>
 					</div>
 					<div class="secondary" id="divNumeroCigarros">
@@ -955,37 +987,46 @@
 						<label for='bebida'>Consome bebidas alcoólicas:</label>
 						<select name='bebida' id='bebida' class='selectOne required'>
 							<option value=''> </option>
-							<option value='nunca' selected> Nunca consumiu  </option>
+							<option value='nunca'> Nunca consumiu  </option>
 							<option value='jaconsumiu'> Já consumiu, mas n&atilde;o mais.  </option>
 							<option value='sim'> Consome </option>
+							<option value='ignorado'> Ignorado </option>
 						</select>
 					</div>
 					<div id='divDiminuirQuantidadeBebida' class='secondary'>
 						<label for='criterio_cage_0'> Já sentiu que deveria diminuir a quantidade de bebida?</label>
 						<select name='criterio_cage_0' id='criterio_cage_0' class='selectOne required criterio_cage'>
-							<option value='nao'		selected > Não 		</option>
-							<option value='sim'				 > Sim  	</option>
+							<option value=''> </option>
+							<option value='nao'> Não 		</option>
+							<option value='sim'> Sim  	</option>
+							<option value='ignorado'> Ignorado </option>
 						</select>
 					</div>
 					<div id='divCriticasModoBeber' class='secondary'>
 						<label for='criterio_cage_1'> Recebeu críticas ao modo de beber?</label>
 						<select name='criterio_cage_1' id='criterio_cage_1' class='selectOne required criterio_cage'>
-							<option value='nao'		selected > Não 		</option>
-							<option value='sim'				 > Sim  	</option>
+							<option value=''> </option>
+							<option value='nao' > Não 		</option>
+							<option value='sim' > Sim  	</option>
+							<option value='ignorado'> Ignorado </option>
 						</select>
 					</div>
 					<div id='divBebePelaManha' class='secondary'>
 						<label for='criterio_cage_2'> Bebe pela manhã para diminuir o nervosismo ou ressaca?</label>
 						<select name='criterio_cage_2' id='criterio_cage_2' class='selectOne required criterio_cage'>
-							<option value='nao'		selected > Não 		</option>
-							<option value='sim'				 > Sim  	</option>
+							<option value=''> </option>
+							<option value='nao'> Não 		</option>
+							<option value='sim'> Sim  	</option>
+							<option value='ignorado'> Ignorado </option>
 						</select>
 					</div>
 					<div id='divCulpadoManeiraBeber' class='secondary'>
 						<label for='criterio_cage_3'> Sente-se culpado pela maneira de beber?</label>
 						<select name='criterio_cage_3' id='criterio_cage_3' class='selectOne required criterio_cage'>
-							<option value='nao'		selected > Não 		</option>
-							<option value='sim'				 > Sim  	</option>
+							<option value=''> </option>
+							<option value='nao'> Não 		</option>
+							<option value='sim'> Sim  	</option>
+							<option value='ignorado'> Ignorado </option>
 						</select>
 					</div>
 					<div id='divCriterioCage' class='secondary'>
@@ -997,8 +1038,9 @@
 					<legend>HIV/SIDA</legend>
 					<div id='divExameSIDA' class='primary required'>
 						<label for='exameSida'>Realizou o exame:</label>
-						<select name='exameSida' id='exameSida' class='selectOne sinais'>
-							<option value='ignorado' selected> Ignorado  </option>
+						<select name='exameSida' id='exameSida' class='selectOne sinais required'>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -1010,7 +1052,8 @@
 					<div id='divSIDA' class='secondary'>
 						<label for='sida'>Resultado:</label>
 						<select name='sida' id='sida' class='selectOne sinais'>
-							<option value='pendente' selected> Pendente  </option>
+							<option value=''> </option>
+							<option value='pendente'> Pendente  </option>
 							<option value='sim'> Positivo </option>
 							<option value='nao'> Negativo  </option>
 						</select>
@@ -1018,7 +1061,8 @@
 					<div id='divSIDAUsoAntiRetroviral' class='secondary'>
 						<label for='sidaUsoAntiRetroviral'> Uso de anti-retroviral? </label>
 						<select name='sidaUsoAntiRetroviral' id='sidaUsoAntiRetroviral' class='selectOne required'>
-							<option value='ignorado' selected> Ignorado  </option>
+							<option value=''> </option>
+							<option value='ignorado'> Ignorado  </option>
 							<option value='sim'> Sim  </option>
 							<option value='nao'> N&atilde;o  </option>
 						</select>
@@ -1071,7 +1115,7 @@
 					</div>
 					<div id='divAvaliacao' class='primary required'>
 						<label for='avaliacao'> Como o entrevistador avalia a confiabilidade das respostas do entrevistado? (0 a 10) </label>
-						<input type='text' name='avaliacao' id='avaliacao' class='number' size='2' maxlength='2'/>
+						<input type='text' name='avaliacao' id='avaliacao' class='number required' size='2' maxlength='2'/>
 					</div>
 					<div id='divDataFimTriagem' class='primary required'>
 						<label for='dataFimTriagem'> Data do fim da entevista: </label>
