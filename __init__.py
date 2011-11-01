@@ -9,7 +9,7 @@ import mlp_net
 import autocomplete as ac
 import runNet as rn
 
-name = 'Triagem Intervenção Resistência (Ambulatório)'
+name = 'Intervenção Resistência Ambulatório'
 version = 'v1.0.0'
 
 def handle_request(request, fileName):
