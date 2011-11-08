@@ -73,28 +73,21 @@ $(document).ready(function(){
 		data:({service:'state'}),
 		dataType : 'json',
 		cache: false,
-		success : function(data){
-			$.each(data.suggestions, function(i, item){
-				$('#estado').append($('<option>'+item+'</option>' )
-					.val(item)
-				);
-			});
-		}
-	});
-	$.ajax({
-		url: './cgi-bin/autocomplete.py',
-		data:({service:'state'}),
-		dataType : 'json',
 		cache: false,
 		success : function(data){
 			$.each(data.suggestions, function(i, item){
-				$('#naturalidade').append($('<option>'+item+'</option>' )
-					.val(item)
-				);
+				$('#naturalidade')
+					.append($('<option>'+ item +'</option>')
+						.attr('value', item)
+					);
+				$('#estado')
+					.append($('<option>'+item+'</option>')
+						.attr('value', item)
+					);
+
 			});
 		}
 	});
-
 /*------------------------------Edition and Relation-----------------------------*/
 	//Make the urlbase (necessary case SAPeM migrate to another server)
 	var urlString = $(location).attr('href');
@@ -145,12 +138,6 @@ $(document).ready(function(){
 								if ($(el).text().search($(this).val()) != -1)
 									$(this).attr('checked',true);
 								});
-							if (tagname=='naturalidade'){
-								window.document.getElementsByName('naturalidade').value = $(el).text();
-							}
-							if (tagname=='estado'){
-								window.document.getElementsByName('estado').value = $(el).text();
-							}
 							$('#'+tagname).val($(el).text());
 							$('#'+tagname).change();
 							ajaxEdicaoCompleto = true;
