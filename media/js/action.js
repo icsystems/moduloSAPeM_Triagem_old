@@ -627,22 +627,14 @@ $(document).ready(function(){
 		cache: false,
 		success : function(data){
 			$.each(data.suggestions, function(i, item){
-				$('#estado').append($('<option>'+item+'</option>' )
-					.val(item)
-				);
-			});
-		}
-	});
-	$.ajax({
-		url: './cgi-bin/autocomplete.py',
-		data:({service:'state'}),
-		dataType : 'json',
-		cache: false,
-		success : function(data){
-			$.each(data.suggestions, function(i, item){
-				$('#naturalidade').append($('<option>'+item+'</option>' )
-					.val(item)
-				);
+				$('#estado')
+					.append($('<option>'+item+'</option>')
+						.attr('value', item)
+					);
+				$('#naturalidade')
+					.append($('<option>'+item+'</option>')
+						.attr('value', item)
+					);
 			});
 		}
 	});
